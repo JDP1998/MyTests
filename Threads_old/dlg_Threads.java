@@ -1,5 +1,5 @@
 package Threads_old;
-
+import Threads_old.Prozess;
 
 public class dlg_Threads {
 	public static void main (String[]args)
@@ -8,7 +8,7 @@ public class dlg_Threads {
 		i = 0;
 		anz = 10;
 		while (i <= anz) {
-			Prozess p = new Prozess();
+			Threads_old.Prozess p = new Threads_old.Prozess();
 			p.name = i;
 			Thread t = new Thread(p);
 			t.start();
