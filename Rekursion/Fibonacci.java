@@ -2,16 +2,15 @@ package Rekursion;
 
 import java.util.Scanner;
 
-public class Fibunacci {
+public class Fibonacci {
 public static void main (String[] args) {
-	Scanner s = new Scanner(System.in);
 	System.out.println("Welche Zahl möchtest du berechnen?");
 	long start,end,time;
 	start=System.currentTimeMillis();
 	int i=0,z;
-	z=s.nextInt();
+	z=50;
 	for(i=0;i<=z;i++) {
-		System.out.println(Fibunacci(i));
+		System.out.println("Fibonacci von "+i" ist "+Fibonacci(i));
 	}
 	end=System.currentTimeMillis();
 	time=end-start;
@@ -20,13 +19,13 @@ public static void main (String[] args) {
 	System.out.println("Es hat "+time+" Minuten gedauert.");
 }
 
-private static int Fibunacci(int i) {
+private static int Fibonacci(int i) {
 	// TODO Auto-generated method stub
 	if(i<=1) {
 		return 1;
 	}
 	else {
-		return Fibunacci(i-1)+Fibunacci(i-2);
+		return Fibonacci(i-1)+Fibonacci(i-2);
 	}
 }
 }
