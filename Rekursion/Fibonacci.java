@@ -10,7 +10,7 @@ public static void main (String[] args) {
 	int i=0,z;
 	z=50;
 	for(i=0;i<=z;i++) {
-		System.out.println("Fibonacci von "+i" ist "+Fibonacci(i));
+		System.out.println("Fibonacci von "+i+" ist "+Fibonacci(i));
 	}
 	end=System.currentTimeMillis();
 	time=end-start;
