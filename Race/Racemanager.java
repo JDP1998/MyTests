@@ -88,7 +88,7 @@ public class Racemanager {
 
 	public static void get_Standings() throws IOException {
 		// TODO Auto-generated method stub
-		int [] points = new int[22];
+		int [] points = new int[33];
 		int i=0;
 		String line;
 		for (Racer r : lst_Racers) {
