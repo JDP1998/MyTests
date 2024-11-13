@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class Racemanager {
 	
-	public static int position=0,venuecount=0;
+	public static int seasoncount=0,position=0,venuecount=0;
 	public static boolean is_execution_2=false;
     public static ArrayList <Racer> lst_Racers = new ArrayList<>();
     public static ArrayList <Venue> lst_Venues = new ArrayList<>();
@@ -62,6 +62,14 @@ public class Racemanager {
     }
     public void setVenueCount(int venuecount) {
     	this.venuecount=venuecount;
+    }
+    
+    public static int getSeasonCount() {
+    	return seasoncount;
+    	
+    }
+    public void setSeasonCount(int seasoncount) {
+    	this.seasoncount=seasoncount;
     }
 	public static void update_table() throws IOException {
 		// TODO Auto-generated method stub
@@ -149,6 +157,14 @@ public class Racemanager {
 		BufferedReader bReader = new BufferedReader(new FileReader(file));
 		venuecount = Integer.valueOf(bReader.readLine());
 		bReader.close();
+		
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Season.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedReader bReader2 = new BufferedReader(new FileReader(file2));
+		seasoncount = Integer.valueOf(bReader2.readLine());
+		bReader2.close();
 
 	}
 
@@ -241,6 +257,14 @@ public class Racemanager {
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file, false));
 		bWriter.write("0");
 		bWriter.close();
+		
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Season.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(file2, false));
+		bWriter2.write(Integer.valueOf(seasoncount+1));
+		bWriter2.close();
 	}
 
 	public static void print_winner() throws IOException {
@@ -253,7 +277,7 @@ public class Racemanager {
 			file.createNewFile();
 		}
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file, true));
-		bWriter.write(String.valueOf(format.format(d)+" : "+lst_Racers.get(0).getRacerName()));
+		bWriter.write(String.valueOf("Season "+seasoncount+" : "+lst_Racers.get(0).getRacerName()+" with "+lst_Racers.get(0).getRacerPoints()+" points."));
 		bWriter.write("\r\n");
 		bWriter.close();
 	}

@@ -16,7 +16,7 @@ public class dlg_Race {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		boolean is_race_finished = false, add_new_racer = true;
-		int racecount,count=1,minutes,seconds;
+		int seasoncount,racecount,count=1,minutes,seconds;
 		long start,end,time;
 		String name;
 		
@@ -29,13 +29,15 @@ public class dlg_Race {
 		
 		racecount=Racemanager.getVenueCount()+1;
 		
+		seasoncount=Racemanager.getSeasonCount();
+		
 		name=Racemanager.getVenues().get(Racemanager.getVenueCount()).getName();
 		
 		if (Racemanager.getVenueCount() < 19) {
-			System.out.println("Hello everyone. We are at " + name + " today. This is race " + racecount + " of 20!");
+			System.out.println("Hello everyone. Welcome to season "+seasoncount+" of the WCR. We are at " + name + " today. This is race " + racecount + " of 20!");
 			System.out.println("\r\n");
 		} else {
-			System.out.println("Welcome to the finale of this year's season in " + name + "!");
+			System.out.println("Welcome to the finale of season "+seasoncount+". Today we are in " + name + "!");
 			System.out.println("\r\n");
 		}
 		
