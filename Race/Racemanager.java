@@ -236,6 +236,17 @@ public class Racemanager {
 			bWriter.write("\r\n");
 		}
 		bWriter.close();
+		
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(file2, false));
+		for (Racer r : lst_Racers) {
+			bWriter2.write(String.valueOf(r.getRacerName() + ":0"));
+			bWriter2.write("\r\n");
+		}
+		bWriter2.close();
 	}
 
 	/*public static void reset_venues() {
@@ -262,22 +273,34 @@ public class Racemanager {
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
+		seasoncount++;
 		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(file2, false));
-		bWriter2.write(Integer.valueOf(seasoncount+1));
+		bWriter2.write(String.valueOf(seasoncount));
 		bWriter2.close();
 	}
 
 	public static void print_winner() throws IOException {
 		// TODO Auto-generated method stub
-		Date d = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-		System.out.println("The winner is "+lst_Racers.get(0).getRacerName()+" with "+lst_Racers.get(0).getRacerPoints());
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
-		if (file.exists() == false) {
+		String line,winner,points;
+		String teile[];
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+		if(file.exists()==false) {
 			file.createNewFile();
 		}
-		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file, true));
-		bWriter.write(String.valueOf("Season "+seasoncount+" : "+lst_Racers.get(0).getRacerName()+" with "+lst_Racers.get(0).getRacerPoints()+" points."));
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		line=bReader.readLine();
+		bReader.close();
+		teile=line.split(":");
+		winner=teile[0];
+		points=teile[1];
+		System.out.println("\r\n");
+		System.out.println("The winner is "+winner+" with "+points);
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
+		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+points+" points."));
 		bWriter.write("\r\n");
 		bWriter.close();
 	}
