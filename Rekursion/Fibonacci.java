@@ -5,7 +5,7 @@ public static void main (String[] args) {
 	long start,end,time;
 	start=System.currentTimeMillis();
 	int seconds,minutes,i=0,z;
-	z=50;
+	z=55;
 	for(i=0;i<=z;i++) {
 		System.out.println("Fibonacci von "+i+" ist "+Fibonacci(i));
 	}
