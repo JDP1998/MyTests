@@ -1,9 +1,20 @@
 package Usecases;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class dlg_Zeichnung {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
+		File file = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Zeichnung.txt");
+		if(file.exists()==false) {
+			file.createNewFile();
+		}
+		
+		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 		int random,linecounter=0,counter=0;
 		String druckzeile;
 		
@@ -20,9 +31,11 @@ public class dlg_Zeichnung {
 				}
 				counter++;
 			}
-			System.out.println(druckzeile);
+			bufferedWriter.write(druckzeile);
 			linecounter++;
 		}
+		
+		bufferedWriter.close();
 
 	}
 
