@@ -84,6 +84,9 @@ public class Racer extends Thread {
 			System.out.println("Dont make a fool out of me man!");
 			break;
 		}
+		if(position==20) {
+			System.out.println("No points are given anymore!");
+		}
 	}
 
 }

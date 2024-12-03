@@ -1,7 +1,15 @@
 package Rekursion;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class Fibonacci {
 public static void main (String[] args) {
+	File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Time.txt");
+	if(f.exists()==false) {
+		f.createNewFile();
+	}
 	long start,end,time;
 	start=System.currentTimeMillis();
 	int seconds,minutes,i=0,z;
@@ -15,6 +23,10 @@ public static void main (String[] args) {
 	minutes=(int)(time/60);
 	seconds=(int)(time%60);
 	System.out.println("Es hat "+minutes+" Minute(-n) und "+seconds+" Sekunde(-n) gedauert.");
+	BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(f,true));
+	bufferedWriter.write(minutes+":"+seconds);
+	bufferedWriter.write("\r\n");
+	bufferedWriter.close();
 }
 
 private static int Fibonacci(int i) {
