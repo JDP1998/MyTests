@@ -35,6 +35,7 @@ public class DealOrNoDeal extends JFrame {
 			public void run() {
 				try {
 					DealOrNoDeal frame = new DealOrNoDeal();
+					frame.setTitle("Deal or No Deal by Johannes Portzehl");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +49,7 @@ public class DealOrNoDeal extends JFrame {
 	 */
 	public DealOrNoDeal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 700);
+		setBounds(100, 100, 1350, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -59,8 +60,8 @@ public class DealOrNoDeal extends JFrame {
 		JPanel panel4 = new JPanel();
 		JPanel panel5 = new JPanel();
 		JTabbedPane pane = new JTabbedPane();
-		int i=0,x=0,y=0;
-		pane.setBounds(0, 0, 1300, 620);
+		int i=0,x=300,y=0;
+		pane.setBounds(0, 0, 1310, 700);
 		
 		pane.add("Spiel",panel1);
 		panel1.setLayout(null);
@@ -69,8 +70,6 @@ public class DealOrNoDeal extends JFrame {
 		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Bitte wähle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
-				create_Ammounts();
-				fill_Cases();
 				for(Button b : lst_Koffer) {
 					b.setEnabled(true);
 					//System.out.println("Koffer "+b.nummer+" hat: "+b.wert);
@@ -79,24 +78,31 @@ public class DealOrNoDeal extends JFrame {
 			}
 		});
 		btn_start.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btn_start.setBounds(600, 500, 100, 100);
+		btn_start.setBounds(600, 532, 100, 100);
 		panel1.add(btn_start);
 		
-		pane.add("Historie",panel2);
+		pane.add("Bank",panel2);
 		panel2.setLayout(null);
 		
-		pane.add("Rekorde",panel3);
+		pane.add("Historie",panel3);
 		panel3.setLayout(null);
 		
-		pane.add("Anleitung",panel4);
+		pane.add("Rekorde",panel4);
 		panel4.setLayout(null);
 		
+		pane.add("Anleitung",panel5);
+		panel4.setLayout(null);
+		panel5.setLayout(null);
+		
 		JLabel lbl_rules = new JLabel("New label");
-		lbl_rules.setBounds(0, -74, 1293, 634);
-		panel4.add(lbl_rules);
-		ImageIcon iconLogo = new ImageIcon("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Rules.png");
+		lbl_rules.setBounds(0, 95, 1359, 457);
+		panel5.add(lbl_rules);
+		ImageIcon iconLogo = new ImageIcon("src//DealOrNoDeal//Rules.png");
 		lbl_rules.setIcon(iconLogo);
 		contentPane.add(pane);
+		
+		create_Ammounts();
+		fill_Cases();
 		
 		for(i=0;i<=24;i++) {
 			Button b = new Button();
@@ -105,13 +111,31 @@ public class DealOrNoDeal extends JFrame {
 			b.setEnabled(false);
 			b.nummer=i+1;
 			b.setText(String.valueOf(b.nummer));
-			x=x+300;
-			if(x==1500) {
+			x=x+150;
+			if(x==1050) {
 				y=y+100;
-				x=0;
+				x=300;
 			}
 			panel1.add(b);
 			lst_Koffer.add(b);
+		}
+		i=0;
+		x=0;
+		y=0;
+		for(i=0;i<=24;i++) {
+			Ammount a = new Ammount();
+			a.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			a.setBounds(x, y, 100, 45);
+			a.setEnabled(false);
+			a.number=i+1;
+			a.ammount=String.valueOf(lst_Ammounts.get(i));
+			a.setText(String.valueOf(lst_Ammounts.get(i)));
+			panel1.add(a);
+            y=y+50;
+			if(y==650) {
+				x=1200;
+				y=0;
+			}
 		}
 		
 	}
