@@ -24,8 +24,8 @@ public class DealOrNoDeal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	public ArrayList <Integer> lst_Ammounts = new ArrayList<>(); 
-	public ArrayList <Button> lst_Koffer = new ArrayList<>();
+	public static ArrayList <Integer> lst_Ammounts = new ArrayList<>(); 
+	public static ArrayList <Button> lst_Koffer = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -72,7 +72,6 @@ public class DealOrNoDeal extends JFrame {
 				JOptionPane.showMessageDialog(null, "Bitte wähle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
 				for(Button b : lst_Koffer) {
 					b.setEnabled(true);
-					//System.out.println("Koffer "+b.nummer+" hat: "+b.wert);
 				}
 				btn_start.setEnabled(false);
 			}
@@ -101,8 +100,8 @@ public class DealOrNoDeal extends JFrame {
 		lbl_rules.setIcon(iconLogo);
 		contentPane.add(pane);
 		
-		create_Ammounts();
-		fill_Cases();
+		Manager_Kandidat.createAmmounts();
+		Manager_Kandidat.fill_Cases();
 		
 		for(i=0;i<=24;i++) {
 			Button b = new Button();
@@ -140,42 +139,4 @@ public class DealOrNoDeal extends JFrame {
 		
 	}
 
-	protected void fill_Cases() {
-		// TODO Auto-generated method stub
-		int random=0;
-		for(Button b: lst_Koffer) {
-			random=(int)(Math.random()*lst_Ammounts.size());
-			b.wert=lst_Ammounts.get(random);
-			lst_Ammounts.remove(random);
-		}
-	}
-
-	protected void create_Ammounts() {
-		// TODO Auto-generated method stub
-		lst_Ammounts.add(1);
-		lst_Ammounts.add(5);
-		lst_Ammounts.add(10);
-		lst_Ammounts.add(25);
-		lst_Ammounts.add(50);
-		lst_Ammounts.add(75);
-		lst_Ammounts.add(100);
-		lst_Ammounts.add(200);
-		lst_Ammounts.add(300);
-		lst_Ammounts.add(400);
-		lst_Ammounts.add(500);
-		lst_Ammounts.add(750);
-		lst_Ammounts.add(1000);
-		lst_Ammounts.add(5000);
-		lst_Ammounts.add(10000);
-		lst_Ammounts.add(25000);
-		lst_Ammounts.add(50000);
-		lst_Ammounts.add(75000);
-		lst_Ammounts.add(100000);
-		lst_Ammounts.add(200000);
-		lst_Ammounts.add(300000);
-		lst_Ammounts.add(400000);
-		lst_Ammounts.add(500000);
-		lst_Ammounts.add(750000);
-		lst_Ammounts.add(1000000);
-	}
 }
