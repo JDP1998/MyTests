@@ -25,6 +25,7 @@ public class DealOrNoDeal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static ArrayList <Integer> lst_Ammounts = new ArrayList<>(); 
+	public static ArrayList <Ammount> lst_Fields = new ArrayList();
 	public static ArrayList <Button> lst_Koffer = new ArrayList<>();
 
 	/**
@@ -49,7 +50,8 @@ public class DealOrNoDeal extends JFrame {
 	 */
 	public DealOrNoDeal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 720);
+		//setBounds(100, 100, 1350, 720);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -69,7 +71,8 @@ public class DealOrNoDeal extends JFrame {
 		JButton btn_start = new JButton("Start");
 		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Bitte wähle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
+				Manager_Kandidat.fill_Cases();
+				JOptionPane.showMessageDialog(null, "Bitte wï¿½hle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
 				for(Button b : lst_Koffer) {
 					b.setEnabled(true);
 				}
@@ -101,7 +104,6 @@ public class DealOrNoDeal extends JFrame {
 		contentPane.add(pane);
 		
 		Manager_Kandidat.createAmmounts();
-		Manager_Kandidat.fill_Cases();
 		
 		for(i=0;i<=24;i++) {
 			Button b = new Button();
@@ -110,6 +112,15 @@ public class DealOrNoDeal extends JFrame {
 			b.setEnabled(false);
 			b.nummer=i+1;
 			b.setText(String.valueOf(b.nummer));
+			b.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					Manager_Kandidat.openCase(b.nummer);
+				}
+				
+			});
 			x=x+150;
 			if(x==1050) {
 				y=y+100;
@@ -130,6 +141,7 @@ public class DealOrNoDeal extends JFrame {
 			a.ammount=String.valueOf(lst_Ammounts.get(i));
 			a.setText(String.valueOf(lst_Ammounts.get(i)));
 			panel1.add(a);
+			lst_Fields.add(a);
             y=y+50;
 			if(y==650) {
 				x=1200;
