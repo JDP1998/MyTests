@@ -1,5 +1,7 @@
 package DealOrNoDeal;
 
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -63,6 +65,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 			for(Ammount a:lst_Fields) {
 				if(Integer.valueOf(a.ammount)==lst_Koffer.get(nummer-1).wert) {
 					a.setText("");
+					a.setBackground(Color.RED);
 					lst_Fields.remove(a);
 					break;
 				}
@@ -127,8 +130,10 @@ public class Manager_Kandidat extends DealOrNoDeal {
 							if (tausch == JOptionPane.YES_OPTION) {
 								if (Integer.valueOf(lst_Fields.get(0).ammount) == deal) {
 									deal = Integer.valueOf(lst_Fields.get(0).ammount);
+									case_ammount = Integer.valueOf(lst_Fields.get(1).ammount);
 								} else {
 									deal = Integer.valueOf(lst_Fields.get(1).ammount);
+									case_ammount = Integer.valueOf(lst_Fields.get(0).ammount);
 								}
 								is_tausch = true;
 							} else {
@@ -136,7 +141,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 								if (Integer.valueOf(lst_Fields.get(0).ammount) == deal) {
 									case_ammount = Integer.valueOf(lst_Fields.get(1).ammount);
 								} else {
-									case_ammount = Integer.valueOf(lst_Fields.get(1).ammount);
+									case_ammount = Integer.valueOf(lst_Fields.get(0).ammount);
 								}
 
 							}
@@ -187,7 +192,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 						 }
 						 else {
 							 JOptionPane.showMessageDialog(null,
-										"Das Spiel ist vorbei. Du hättest tuaschen sollen! In deinem Koffer sind " + deal + "€!", "Information",
+										"Das Spiel ist vorbei. Du hättest tauschen sollen! In deinem Koffer sind " + deal + "€!", "Information",
 										JOptionPane.INFORMATION_MESSAGE);
 								System.exit(0);
 						 }
