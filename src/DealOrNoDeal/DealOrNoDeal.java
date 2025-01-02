@@ -72,7 +72,7 @@ public class DealOrNoDeal extends JFrame {
 		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_Kandidat.fill_Cases();
-				JOptionPane.showMessageDialog(null, "Bitte wï¿½hle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Bitte wähle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
 				for(Button b : lst_Koffer) {
 					b.setEnabled(true);
 				}
