@@ -1,14 +1,20 @@
 package DealOrNoDeal;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class Manager_Kandidat extends DealOrNoDeal {
 
-	public static int tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
-	public static boolean is_final=false,is_tausch=false,is_beendet=false;
+	public static int tausch,beendet=0,differenz,deal,runde=0,geÃ¶ffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
+	public static boolean good_deal=false,is_final=false,is_tausch=false,is_beendet=false;
 	public static Object[] choices = {"Deal!", "No Deal!"};
 	public static Object  [] choices2 = {"Tausch!","Kein Tausch!"};
 	public static Object defaultChoice = choices[0];
@@ -51,13 +57,13 @@ public class Manager_Kandidat extends DealOrNoDeal {
 		}
 	}
 
-	public static void openCase(int nummer) {
+	public static void openCase(int nummer) throws IOException {
 		// TODO Auto-generated method stub
 		if(runde==0) {
 			case_ammount=lst_Koffer.get(nummer-1).wert;
-			System.out.println("Dein Koffer: "+case_ammount);
+			//System.out.println("Dein Koffer: "+case_ammount);
 			lst_Koffer.get(nummer-1).setEnabled(false);
-			JOptionPane.showMessageDialog(null, "In dieser Runde musst du 5 Koffer öffnen!","Info",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "In dieser Runde musst du 5 Koffer Ã¶ffnen!","Info",JOptionPane.INFORMATION_MESSAGE);
 			runde++;
 		}
 		else {
@@ -71,14 +77,14 @@ public class Manager_Kandidat extends DealOrNoDeal {
 				}
 			}
 			lst_Koffer.get(nummer-1);
-			geöffnet++;
+			geÃ¶ffnet++;
 			int differenz=Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl).getText())-Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl-1).getText());
-			if(geöffnet==anzahl) {
+			if(geÃ¶ffnet==anzahl) {
 				if(anzahl>1) {
 					if (runde == 1) {
 						deal=(int)(Math.random()*differenz)+Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl-1).getText());
 						beendet=JOptionPane.showOptionDialog(null,
-					             "Der Bänker bietet dir "+deal+"€ an. In der nächsten Runde musst du " + anzahl + " Koffer öffnen!",
+					             "Der BÃ¤nker bietet dir "+deal+"â‚¬ an. In der nÃ¤chsten Runde musst du " + anzahl + " Koffer Ã¶ffnen!",
 					             "Information",
 					             JOptionPane.YES_NO_OPTION,
 					             JOptionPane.QUESTION_MESSAGE,
@@ -89,16 +95,16 @@ public class Manager_Kandidat extends DealOrNoDeal {
 							is_beendet=true;
 						}
 						runde++;
-						geöffnet = 0;
+						geÃ¶ffnet = 0;
 					} else {
 						anzahl--;
 						deal=(int)(Math.random()*differenz)+Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl-1).getText());
-						beendet=JOptionPane.showOptionDialog(null, "Der Bänker bietet dir "+deal+"€ an. In der nächsten Runde musst du " + anzahl + " Koffer öffnen!",
+						beendet=JOptionPane.showOptionDialog(null, "Der BÃ¤nker bietet dir "+deal+"â‚¬ an. In der nÃ¤chsten Runde musst du " + anzahl + " Koffer Ã¶ffnen!",
 								"Information", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,choices,defaultChoice);
 						if (beendet == JOptionPane.YES_OPTION) {
 							is_beendet=true;
 						}
-						geöffnet = 0;
+						geÃ¶ffnet = 0;
 						runde++;
 					}
 
@@ -107,24 +113,24 @@ public class Manager_Kandidat extends DealOrNoDeal {
 					if(runde<=8) {
 						
 						deal=(int)(Math.random()*differenz)+Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl-1).getText());
-						beendet=JOptionPane.showOptionDialog(null, "Der Bänker bietet dir "+deal+"€ an. In der nächsten Runde musst du 1 Koffer öffnen!", "Information",
+						beendet=JOptionPane.showOptionDialog(null, "Der BÃ¤nker bietet dir "+deal+"â‚¬ an. In der nÃ¤chsten Runde musst du 1 Koffer Ã¶ffnen!", "Information",
 								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,choices,defaultChoice);
 						if (beendet == JOptionPane.YES_OPTION) {
 							is_beendet=true;
 						}
 						runde++;
-						geöffnet = 0;
+						geÃ¶ffnet = 0;
 					}
 					else {
 						deal=(int)(Math.random()*differenz)+Integer.valueOf(lst_Fields.get(lst_Fields.size()-anzahl-1).getText());
-						beendet=JOptionPane.showOptionDialog(null, "Der Bänker bietet dir "+deal+"€ an. In der nächsten Runde musst du 1 Koffer öffnen!", "Information",
+						beendet=JOptionPane.showOptionDialog(null, "Der BÃ¤nker bietet dir "+deal+"â‚¬ an. In der nÃ¤chsten Runde musst du 1 Koffer Ã¶ffnen!", "Information",
 								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,choices,defaultChoice);
 						
 						if (beendet == JOptionPane.YES_OPTION) {
 							is_beendet=true;
 						}
 						else {
-							tausch = JOptionPane.showOptionDialog(null, "Möchtest du deinen Koffer tauschen?",
+							tausch = JOptionPane.showOptionDialog(null, "MÃ¶chtest du deinen Koffer tauschen?",
 									"Information", JOptionPane.INFORMATION_MESSAGE, JOptionPane.QUESTION_MESSAGE, null,
 									choices2, defaultChoice);
 							if (tausch == JOptionPane.YES_OPTION) {
@@ -151,55 +157,94 @@ public class Manager_Kandidat extends DealOrNoDeal {
 					}
 				}
 			}
-			if(is_beendet==true) {
-				System.out.println("Deal: "+deal);
-				System.out.println("Case: "+case_ammount);
-				if(is_final==false) {
-					if(deal>case_ammount) {
+			if (is_beendet == true) {
+				/*System.out.println("Deal: " + deal);
+				System.out.println("Case: " + case_ammount);*/
+				if (is_final == false) {
+					if (deal > case_ammount) {
 						JOptionPane.showMessageDialog(null,
-								"Das Spiel ist vorbei. Das war ein guter Deal! In deinem Koffer waren " + case_ammount + "€!", "Information",
-								JOptionPane.INFORMATION_MESSAGE);
+								"Das Spiel ist vorbei. Das war ein guter Deal! In deinem Koffer waren " + case_ammount
+										+ "â‚¬!",
+								"Information", JOptionPane.INFORMATION_MESSAGE);
+						good_deal=true;
+						Update_History();
+						System.exit(0);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Das Spiel ist vorbei. Das war ein schlechter Deal! In deinem Koffer waren "
+										+ case_ammount + "â‚¬!",
+								"Information", JOptionPane.INFORMATION_MESSAGE);
+						Update_History();
 						System.exit(0);
 					}
-					else {
-						JOptionPane.showMessageDialog(null,
-								"Das Spiel ist vorbei. Das war ein schlechter Deal! In deinem Koffer waren " + case_ammount + "€!", "Information",
-								JOptionPane.INFORMATION_MESSAGE);
-						System.exit(0);
+				} else {
+					if (is_tausch == true) {
+						if (deal > case_ammount) {
+							JOptionPane
+									.showMessageDialog(null,
+											"Das Spiel ist vorbei. Das war ein guter Tausch! In deinem Koffer waren "
+													+ case_ammount + "â‚¬!",
+											"Information", JOptionPane.INFORMATION_MESSAGE);
+							good_deal=true;
+							Update_History();
+							System.exit(0);
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Das Spiel ist vorbei. Das war ein schlechter Tausch! In deinem Koffer waren "
+											+ case_ammount + "â‚¬!",
+									"Information", JOptionPane.INFORMATION_MESSAGE);
+							Update_History();
+							System.exit(0);
+						}
+					} else {
+						if (deal > case_ammount) {
+							JOptionPane.showMessageDialog(null,
+									"Das Spiel ist vorbei. Gut, dass du nicht getauscht hast! In deinem Koffer sind "
+											+ deal + "â‚¬!",
+									"Information", JOptionPane.INFORMATION_MESSAGE);
+							good_deal=true;
+							Update_History();
+							System.exit(0);
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Das Spiel ist vorbei. Du hÃ¤ttest tauschen sollen! In deinem Koffer sind " + deal
+											+ "â‚¬!",
+									"Information", JOptionPane.INFORMATION_MESSAGE);
+							Update_History();
+							System.exit(0);
+						}
 					}
-				}
-				else {
-					 if(is_tausch==true) {
-						 if(deal>case_ammount) {
-							 JOptionPane.showMessageDialog(null,
-										"Das Spiel ist vorbei. Das war ein guter Tausch! In deinem Koffer waren " + case_ammount + "€!", "Information",
-										JOptionPane.INFORMATION_MESSAGE);
-								System.exit(0);
-						 }
-						 else {
-							 JOptionPane.showMessageDialog(null,
-										"Das Spiel ist vorbei. Das war ein schlechter Tausch! In deinem Koffer waren " + case_ammount + "€!", "Information",
-										JOptionPane.INFORMATION_MESSAGE);
-								System.exit(0);
-						 }
-					 }
-					 else {
-						 if(deal>case_ammount) {
-							 JOptionPane.showMessageDialog(null,
-										"Das Spiel ist vorbei. Gut, dass du nicht getauscht hast! In deinem Koffer sind " + deal + "€!", "Information",
-										JOptionPane.INFORMATION_MESSAGE);
-								System.exit(0);
-						 }
-						 else {
-							 JOptionPane.showMessageDialog(null,
-										"Das Spiel ist vorbei. Du hättest tauschen sollen! In deinem Koffer sind " + deal + "€!", "Information",
-										JOptionPane.INFORMATION_MESSAGE);
-								System.exit(0);
-						 }
-					 }
 				}
 			}
 		}
+	}
+
+	private static void Update_History() throws IOException {
+		// TODO Auto-generated method stub
+		File f = new File ("src//DealOrNoDeal//History.txt");
+		int wins = 0, loss = 0, quote=0;
+		if(f.exists()==false) {
+			f.createNewFile();
+		}
+		BufferedReader breader = new BufferedReader (new FileReader(f));
+		wins=Integer.valueOf(breader.readLine());
+		loss=Integer.valueOf(breader.readLine());
+		breader.close();
+		if(good_deal==true) {
+			wins++;
+		}
+		else {
+			loss++;
+		}
+		quote=wins/wins+loss;
+		quote=quote*100;
+		BufferedWriter bwriter = new BufferedWriter (new FileWriter(f,false));
+		bwriter.write(String.valueOf(wins));
+		bwriter.write("\r\n");
+		bwriter.write(String.valueOf(loss));
+		bwriter.write("\r\n");
+		bwriter.write(String.valueOf(quote));
+		bwriter.close();
 	}
 
 	

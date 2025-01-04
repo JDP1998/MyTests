@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -73,7 +74,7 @@ public class DealOrNoDeal extends JFrame {
 		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_Kandidat.fill_Cases();
-				JOptionPane.showMessageDialog(null, "Bitte w‰hle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Bitte w√§hle deinen Koffer!","Anweisung",JOptionPane.INFORMATION_MESSAGE);
 				for(Button b : lst_Koffer) {
 					b.setEnabled(true);
 				}
@@ -118,7 +119,12 @@ public class DealOrNoDeal extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					Manager_Kandidat.openCase(b.nummer);
+					try {
+						Manager_Kandidat.openCase(b.nummer);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			});
