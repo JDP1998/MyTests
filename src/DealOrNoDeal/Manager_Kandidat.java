@@ -7,13 +7,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class Manager_Kandidat extends DealOrNoDeal {
 
-	public static int tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
+	public static int win,tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
 	public static boolean good_deal=false,is_final=false,is_tausch=false,is_beendet=false;
 	public static Object[] choices = {"Deal!", "No Deal!"};
 	public static Object  [] choices2 = {"Tausch!","Kein Tausch!"};
@@ -167,7 +169,9 @@ public class Manager_Kandidat extends DealOrNoDeal {
 										+ "€!",
 								"Information", JOptionPane.INFORMATION_MESSAGE);
 						good_deal=true;
+						win=deal-case_ammount;
 						Update_History();
+						Update_Deals();
 						System.exit(0);
 					} else {
 						JOptionPane.showMessageDialog(null,
@@ -219,10 +223,44 @@ public class Manager_Kandidat extends DealOrNoDeal {
 		}
 	}
 
+	private static void Update_Deals() throws IOException {
+		// TODO Auto-generated method stub
+		File f = new File ("src//DealOrNoDeal//Deals.txt");
+		int [] deals = new int [5];
+		int i = 0;
+		if(f.exists()==false) {
+			f.createNewFile();
+		}
+		BufferedReader breader = new BufferedReader (new FileReader(f));
+		while(i<=4) {
+			deals[i]=Integer.valueOf(breader.readLine());
+			i++;
+		}
+		breader.close();
+		if(deals[4]<win) {
+			deals[4]=win;
+		}
+		Arrays.sort(deals);
+		for(Integer number: deals) {
+			System.out.println(number);
+		}
+		i=4;
+		BufferedWriter bwriter = new BufferedWriter (new FileWriter(f,false));
+		while(i>=0) {
+			bwriter.write(String.valueOf(deals[i]));
+			bwriter.write("\r\n");
+			i--;
+		}
+		bwriter.close();
+		
+		
+	}
+
 	private static void Update_History() throws IOException {
 		// TODO Auto-generated method stub
 		File f = new File ("src//DealOrNoDeal//History.txt");
-		int wins = 0, loss = 0, quote=0;
+		int gesamt=0, wins = 0, loss = 0, int_quote=0;
+		double quote;
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
@@ -236,14 +274,15 @@ public class Manager_Kandidat extends DealOrNoDeal {
 		else {
 			loss++;
 		}
-		quote=wins/wins+loss;
-		quote=quote*100;
+		gesamt=wins+loss;
+		quote=(double) (wins) / (double) (gesamt);
+		int_quote=(int) (quote*100);
 		BufferedWriter bwriter = new BufferedWriter (new FileWriter(f,false));
 		bwriter.write(String.valueOf(wins));
 		bwriter.write("\r\n");
 		bwriter.write(String.valueOf(loss));
 		bwriter.write("\r\n");
-		bwriter.write(String.valueOf(quote));
+		bwriter.write(String.valueOf(int_quote));
 		bwriter.close();
 	}
 
