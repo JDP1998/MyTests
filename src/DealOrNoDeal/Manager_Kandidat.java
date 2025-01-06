@@ -15,7 +15,7 @@ import javax.swing.UIManager;
 
 public class Manager_Kandidat extends DealOrNoDeal {
 
-	public static int win,tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
+	public static int middle,win,tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
 	public static boolean good_deal=false,is_final=false,is_tausch=false,is_beendet=false;
 	public static Object[] choices = {"Deal!", "No Deal!"};
 	public static Object  [] choices2 = {"Tausch!","Kein Tausch!"};
@@ -191,6 +191,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 											"Information", JOptionPane.INFORMATION_MESSAGE);
 							good_deal=true;
 							Update_History();
+							Update_Ammounts();
 							System.exit(0);
 						} else {
 							JOptionPane.showMessageDialog(null,
@@ -198,6 +199,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 											+ case_ammount + "€!",
 									"Information", JOptionPane.INFORMATION_MESSAGE);
 							Update_History();
+							Update_Ammounts();
 							System.exit(0);
 						}
 					} else {
@@ -208,6 +210,7 @@ public class Manager_Kandidat extends DealOrNoDeal {
 									"Information", JOptionPane.INFORMATION_MESSAGE);
 							good_deal=true;
 							Update_History();
+							Update_Ammounts();
 							System.exit(0);
 						} else {
 							JOptionPane.showMessageDialog(null,
@@ -215,12 +218,44 @@ public class Manager_Kandidat extends DealOrNoDeal {
 											+ "€!",
 									"Information", JOptionPane.INFORMATION_MESSAGE);
 							Update_History();
+							Update_Ammounts();
 							System.exit(0);
 						}
 					}
 				}
 			}
 		}
+	}
+
+	private static void Update_Ammounts() throws IOException {
+		// TODO Auto-generated method stub
+		File f = new File ("src//DealOrNoDeal//Ammounts.txt");
+		int [] ammounts = new int [5];
+		int i = 0;
+		if(f.exists()==false) {
+			f.createNewFile();
+		}
+		BufferedReader breader = new BufferedReader (new FileReader(f));
+		while(i<=4) {
+			ammounts[i]=Integer.valueOf(breader.readLine());
+			i++;
+		}
+		breader.close();
+		if(ammounts[4]<deal) {
+			ammounts[4]=deal;
+		}
+		Arrays.sort(ammounts);
+		/*for(Integer number: ammounts) {
+			System.out.println(number);
+		}*/
+		i=4;
+		BufferedWriter bwriter = new BufferedWriter (new FileWriter(f,false));
+		while(i>=0) {
+			bwriter.write(String.valueOf(ammounts[i]));
+			bwriter.write("\r\n");
+			i--;
+		}
+		bwriter.close();
 	}
 
 	private static void Update_Deals() throws IOException {
@@ -241,9 +276,9 @@ public class Manager_Kandidat extends DealOrNoDeal {
 			deals[4]=win;
 		}
 		Arrays.sort(deals);
-		for(Integer number: deals) {
+		/*for(Integer number: deals) {
 			System.out.println(number);
-		}
+		}*/
 		i=4;
 		BufferedWriter bwriter = new BufferedWriter (new FileWriter(f,false));
 		while(i>=0) {
