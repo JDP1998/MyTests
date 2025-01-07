@@ -15,6 +15,11 @@ import javax.swing.UIManager;
 
 public class Manager_Kandidat extends DealOrNoDeal {
 
+	public Manager_Kandidat() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public static int middle,win,tausch,beendet=0,differenz,deal,runde=0,geöffnet=0,anzahl=5,case_ammount=0,tausch_ammount=0;
 	public static boolean good_deal=false,is_final=false,is_tausch=false,is_beendet=false;
 	public static Object[] choices = {"Deal!", "No Deal!"};

@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -29,6 +33,10 @@ public class DealOrNoDeal extends JFrame {
 	public static ArrayList <Integer> lst_Ammounts = new ArrayList<>(); 
 	public static ArrayList <Ammount> lst_Fields = new ArrayList();
 	public static ArrayList <Button> lst_Koffer = new ArrayList<>();
+	public static int win,loss,quote;
+	private JTextField text_wins;
+	private JTextField txt_loss;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -49,8 +57,19 @@ public class DealOrNoDeal extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
 	 */
-	public DealOrNoDeal() {
+	public DealOrNoDeal() throws IOException {
+		File f = new File("src//DealOrNoDeal//History.txt");
+		if(f.exists()==false) {
+			f.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(f));
+		win = Integer.valueOf(bReader.readLine());
+		loss = Integer.valueOf(bReader.readLine());
+		quote = Integer.valueOf(bReader.readLine());
+		bReader.close();
+		setFont(new Font("Dialog", Font.PLAIN, 20));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 1350, 720);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -90,6 +109,50 @@ public class DealOrNoDeal extends JFrame {
 		
 		pane.add("Historie",panel3);
 		panel3.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Kandidat Historie");
+		lblNewLabel.setBounds(38, 81, 325, 39);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel3.add(lblNewLabel);
+		
+		text_wins = new JTextField();
+		text_wins.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		text_wins.setBounds(210, 147, 86, 39);
+		text_wins.setEnabled(false);
+		text_wins.setText(String.valueOf(win));
+		panel3.add(text_wins);
+		text_wins.setColumns(10);
+		
+		JLabel lbl_wins = new JLabel("Siege: ");
+		lbl_wins.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbl_wins.setBounds(65, 143, 74, 39);
+		panel3.add(lbl_wins);
+		
+		txt_loss = new JTextField();
+		txt_loss.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txt_loss.setBounds(210, 222, 86, 39);
+		txt_loss.setEnabled(false);
+		txt_loss.setText(String.valueOf(loss));
+		panel3.add(txt_loss);
+		txt_loss.setColumns(10);
+		
+		JLabel lbl_loss = new JLabel("Verloren:");
+		lbl_loss.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbl_loss.setBounds(38, 222, 124, 33);
+		panel3.add(lbl_loss);
+		
+		JTextField text_quote = new JTextField();
+		text_quote.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		text_quote.setBounds(210, 300, 86, 39);
+		text_quote.setEnabled(false);
+		text_quote.setText(String.valueOf(quote));
+		panel3.add(text_quote);
+		text_quote.setColumns(10);
+		
+		JLabel lbl_quote = new JLabel("Quote:");
+		lbl_quote.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbl_quote.setBounds(65, 300, 124, 33);
+		panel3.add(lbl_quote);
 		
 		pane.add("Rekorde",panel4);
 		panel4.setLayout(null);
@@ -157,5 +220,4 @@ public class DealOrNoDeal extends JFrame {
 		}
 		
 	}
-
 }
