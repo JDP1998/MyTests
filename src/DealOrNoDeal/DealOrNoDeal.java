@@ -34,9 +34,15 @@ public class DealOrNoDeal extends JFrame {
 	public static ArrayList <Ammount> lst_Fields = new ArrayList();
 	public static ArrayList <Button> lst_Koffer = new ArrayList<>();
 	public static int win,loss,quote;
+	public static int [] deals = new int [5];
 	private JTextField text_wins;
 	private JTextField txt_loss;
 	private JTextField textField;
+	private JTextField txt_1;
+	private JTextField txt_2;
+	private JTextField txt_3;
+	private JTextField txt_4;
+	private JTextField txt_5;
 
 	/**
 	 * Launch the application.
@@ -60,6 +66,7 @@ public class DealOrNoDeal extends JFrame {
 	 * @throws IOException 
 	 */
 	public DealOrNoDeal() throws IOException {
+		int counter=0;
 		File f = new File("src//DealOrNoDeal//History.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
@@ -69,6 +76,15 @@ public class DealOrNoDeal extends JFrame {
 		loss = Integer.valueOf(bReader.readLine());
 		quote = Integer.valueOf(bReader.readLine());
 		bReader.close();
+		File f2 = new File ("src//DealOrNoDeal//Deals.txt");
+		if(f2.exists()==false) {
+			f2.createNewFile();
+		}
+		BufferedReader bReader2 = new BufferedReader(new FileReader(f2));
+		for(counter=0;counter<=deals.length-1;counter++) {
+			deals[counter]=Integer.valueOf(bReader2.readLine());
+		}
+		bReader2.close();
 		setFont(new Font("Dialog", Font.PLAIN, 20));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 1350, 720);
@@ -155,10 +171,55 @@ public class DealOrNoDeal extends JFrame {
 		panel3.add(lbl_quote);
 		
 		pane.add("Rekorde",panel4);
-		panel4.setLayout(null);
 		
 		pane.add("Anleitung",panel5);
 		panel4.setLayout(null);
+		panel4.setLayout(null);
+		
+		JLabel ldl_header = new JLabel("Rekorde");
+		ldl_header.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ldl_header.setBounds(25, 52, 143, 44);
+		panel4.add(ldl_header);
+		
+		txt_1 = new JTextField();
+		txt_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txt_1.setBounds(110, 110, 200, 40);
+		txt_1.setText(String.valueOf(deals[0]));
+		txt_1.setEnabled(false);
+		panel4.add(txt_1);
+		txt_1.setColumns(10);
+		
+		txt_2 = new JTextField();
+		txt_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txt_2.setBounds(110, 170, 200, 40);
+		txt_2.setText(String.valueOf(deals[1]));
+		txt_2.setEnabled(false);
+		panel4.add(txt_2);
+		txt_2.setColumns(10);
+		
+		txt_3 = new JTextField();
+		txt_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txt_3.setBounds(110, 230, 200, 40);
+		txt_3.setText(String.valueOf(deals[2]));
+		txt_3.setEnabled(false);
+		panel4.add(txt_3);
+		txt_3.setColumns(10);
+		
+		txt_4 = new JTextField();
+		txt_4.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txt_4.setBounds(110, 290, 200, 40);
+		txt_4.setText(String.valueOf(deals[3]));
+		txt_4.setEnabled(false);
+		panel4.add(txt_4);
+		txt_4.setColumns(10);
+		
+		txt_5 = new JTextField();
+		txt_5.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txt_5.setBounds(110, 350, 200, 40);
+		txt_5.setText(String.valueOf(deals[4]));
+		txt_5.setEnabled(false);
+		panel4.add(txt_5);
+		txt_5.setColumns(10);
 		panel5.setLayout(null);
 		
 		JLabel lbl_rules = new JLabel("New label");
