@@ -222,8 +222,8 @@ public class DealOrNoDeal extends JFrame {
 		txt_5.setColumns(10);
 		panel5.setLayout(null);
 		
-		JLabel lbl_rules = new JLabel("New label");
-		lbl_rules.setBounds(0, 95, 1359, 457);
+		JLabel lbl_rules = new JLabel("");
+		lbl_rules.setBounds(0, 36, 1359, 611);
 		panel5.add(lbl_rules);
 		ImageIcon iconLogo = new ImageIcon("src//DealOrNoDeal//Rules.png");
 		lbl_rules.setIcon(iconLogo);
