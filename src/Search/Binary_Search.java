@@ -6,12 +6,12 @@ public class Binary_Search {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [999999];
+		int [] numbers = new int [499999999];
 		int begin = 0,end,number, rounds=1,middle=0,counter=0;
 		boolean is_gefunden=false;
 		
 		//Declare number
-		number=(int)(Math.random()*999999)+1;
+		number=(int)(Math.random()*499999999)+1;
 		System.out.println(number);
 		System.out.println("\r\n");
 		
