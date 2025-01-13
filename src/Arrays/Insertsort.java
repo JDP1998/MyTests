@@ -1,17 +1,16 @@
 package Arrays;
 
-public class Sort_Array {
+public class Insertsort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [2000000];
-		int [] tausch = new int [2];
-		int i,min,counter=0;
+		int [] numbers = new int [1000000];
+		int k,i,min,counter=0;
 		long start, end, time;
 		
 		start=System.currentTimeMillis();
 		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*2000000)+1; 
+			numbers [counter] = (int)(Math.random()*1000000)+1; 
 		}
 		counter=0;
 		while(counter<=numbers.length-1) {
@@ -23,11 +22,10 @@ public class Sort_Array {
 					
 				}
 				else {
-					tausch[0]=numbers[i];
-					tausch[1]=min;
-					numbers[counter]=tausch[0];
-					numbers[i]=tausch[1];
-					min=numbers[counter];
+					k=numbers[i];
+					numbers[i]=numbers[counter];
+					numbers[counter]=k;
+					min=k;
 				}
 			}
 			counter++;
