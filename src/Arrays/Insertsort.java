@@ -1,0 +1,40 @@
+package Arrays;
+
+public class Insertsort {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] numbers = new int[100000];
+		int tausch,counter = 0, i = 1, l = 0, k, place = 0;
+		boolean is_found = false;
+		long start, end, time;
+		
+		start = System.currentTimeMillis();
+		
+		for (counter = 0; counter <= numbers.length - 1; counter++) {
+			numbers[counter] = (int) (Math.random() * 100000) + 1;
+		}
+		
+		counter = 0;
+		for (counter = 0; counter <= numbers.length - 2; counter++) {
+			if (numbers[counter] < numbers[i]) {
+			} else {
+				k=i;
+				for(k=i;k>0;k--) {
+					if (numbers[k - 1] > numbers[k]) {
+						tausch = numbers[k];
+						numbers[k] = numbers[k - 1];
+						numbers[k - 1] = tausch;
+					}
+				}
+			}
+			i++;
+		}
+		for (Integer z : numbers) {
+			System.out.println(z);
+		}
+		end=System.currentTimeMillis();
+		time=end-start;
+		System.out.println("Es hat "+time+" Millisekunden gedauert!");
+	}
+}
