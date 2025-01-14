@@ -6,7 +6,7 @@ public class Bubblesort {
 		// TODO Auto-generated method stub
 		int [] numbers = new int [100000];
 		long start, end, time;
-		int counter=0,i,k;
+		int durchgaenge=0,counter=0,i,k;
 		boolean is_sorted=false;
 
 		start=System.currentTimeMillis();
@@ -28,13 +28,14 @@ public class Bubblesort {
 					numbers[i]=k;
 				}
 			}
+			durchgaenge++;
 		}
 		for(Integer z : numbers) {
 			System.out.println(z);
 		}
 		end=System.currentTimeMillis();
 		time=end-start;
-		System.out.println("Es hat "+time+" Millisekunden gedauert!");
+		System.out.println("Es hat "+time+" Millisekunden gedauert! Es wurden "+durchgaenge+" Durchläufe benötigt");
 	}
 
 }
