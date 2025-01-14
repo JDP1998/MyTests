@@ -13,7 +13,7 @@ public class Bubblesort {
 		long start, end, time;
 		int durchgaenge=0,counter=0,i,k;
 		boolean is_sorted=false;
-
+		String help;
 		start=System.currentTimeMillis();
 		
 		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
@@ -21,8 +21,8 @@ public class Bubblesort {
 			f.createNewFile();
 		}
 		BufferedReader bReader = new BufferedReader(new FileReader(f));
-		while(counter<=numbers.length-1) {
-			numbers[counter]=Integer.valueOf(bReader.readLine());
+		while((help=(bReader.readLine()))!=null) {
+			numbers[counter]=Integer.valueOf(help);
 			counter++;
 		}
 		bReader.close();

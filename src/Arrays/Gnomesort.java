@@ -1,7 +1,9 @@
 package Arrays;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -12,22 +14,19 @@ public class Gnomesort {
 		int [] numbers = new int [10000];
 		int k,gnome=0,counter=0;
 		long start, end, time;
-		
+		String help;
 		start=System.currentTimeMillis();
 		
 		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
-		
-		BufferedWriter bWriter = new BufferedWriter(new FileWriter(f,false));
-		
-		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*10000)+1; 
-			bWriter.write(String.valueOf(numbers[counter]));
-			bWriter.write("\r\n");
+		BufferedReader bReader = new BufferedReader(new FileReader(f));
+		while((help=(bReader.readLine()))!=null) {
+			numbers[counter]=Integer.valueOf(help);
+			counter++;
 		}
-		bWriter.close();
+		bReader.close();
 		
 		while(gnome<=numbers.length-2) {
 			if(numbers[gnome]>numbers[gnome+1]) {

@@ -13,7 +13,7 @@ public class Insertsort {
 		int tausch,counter = 0, i = 1, l = 0, k, place = 0;
 		boolean is_found = false;
 		long start, end, time;
-		
+		String help;
 		start = System.currentTimeMillis();
 		
 		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
@@ -21,8 +21,8 @@ public class Insertsort {
 			f.createNewFile();
 		}
 		BufferedReader bReader = new BufferedReader(new FileReader(f));
-		while(counter<=numbers.length-1) {
-			numbers[counter]=Integer.valueOf(bReader.readLine());
+		while((help=(bReader.readLine()))!=null) {
+			numbers[counter]=Integer.valueOf(help);
 			counter++;
 		}
 		bReader.close();
