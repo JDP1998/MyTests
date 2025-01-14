@@ -4,7 +4,7 @@ public class Bubblesort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [1000000];
+		int [] numbers = new int [100000];
 		long start, end, time;
 		int counter=0,i,k;
 		boolean is_sorted=false;
@@ -12,7 +12,7 @@ public class Bubblesort {
 		start=System.currentTimeMillis();
 		
 		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*1000000)+1; 
+			numbers [counter] = (int)(Math.random()*100000)+1; 
 		}
 		i=0;
 		while(is_sorted==false) {
@@ -34,8 +34,7 @@ public class Bubblesort {
 		}
 		end=System.currentTimeMillis();
 		time=end-start;
-		time=time/1000;
-		System.out.println("Es hat "+time+" Sekunden gedauert!");
+		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 	}
 
 }
