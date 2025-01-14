@@ -1,19 +1,31 @@
 package Arrays;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Bubblesort {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [100000];
+		int [] numbers = new int [10000];
 		long start, end, time;
 		int durchgaenge=0,counter=0,i,k;
 		boolean is_sorted=false;
 
 		start=System.currentTimeMillis();
 		
-		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*100000)+1; 
+		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
+		if(f.exists()==false) {
+			f.createNewFile();
 		}
+		BufferedReader bReader = new BufferedReader(new FileReader(f));
+		while(counter<=numbers.length-1) {
+			numbers[counter]=Integer.valueOf(bReader.readLine());
+			counter++;
+		}
+		bReader.close();
 		i=0;
 		while(is_sorted==false) {
 			is_sorted=true;
