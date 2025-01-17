@@ -40,7 +40,7 @@ public class Heapsort {
 			Tree_Sort();
 			counter=0;
 			for(Node n: lst_Nodes) {
-				numbers[counter]=n.value;
+				numbers[counter]=n.getValue();
 				counter++;
 			}
 			
@@ -61,21 +61,21 @@ public class Heapsort {
 				while (is_sorted == false) {
 					is_sorted = true;
 					for (Node n : lst_Nodes) {
-						if (1<n.number&&n.number<=counter) {
-							parent = n.parent;
+						if (1<n.getNumber()&&n.getNumber()<=counter) {
+							parent = n.getParent();
 							parent--;
-							if (n.value > lst_Nodes.get(parent).value) {
+							if (n.getValue() > lst_Nodes.get(parent).getValue()) {
 								is_sorted = false;
-								k = lst_Nodes.get(parent).value;
-								lst_Nodes.get(parent).value = n.value;
-								n.value = k;
+								k = lst_Nodes.get(parent).getValue();
+								lst_Nodes.get(parent).setValue(n.getValue());
+								n.setValue(k);
 							}
 						}
 					}
 				}
-				k = lst_Nodes.get(0).value;
-				lst_Nodes.get(0).value = lst_Nodes.get(counter).value;
-				lst_Nodes.get(counter).value = k;
+				k = lst_Nodes.get(0).getValue();
+				lst_Nodes.get(0).setValue(lst_Nodes.get(counter).getValue());
+				lst_Nodes.get(counter).setValue(k);
 				counter--;
 			}
 			
@@ -84,17 +84,17 @@ public class Heapsort {
 		private static void Search_Parents() {
 			// TODO Auto-generated method stub
 			for(Node n: lst_Nodes) {
-				if(n.level>1) {
-					if(n.number%2==1) {
-						number=n.number-1;
+				if(n.getLevel()>1) {
+					if(n.getNumber()%2==1) {
+						number=n.getNumber()-1;
 					}
 					else {
-						number=n.number;
+						number=n.getNumber();
 					}
-					position=number-Calculate_Power(n.level-1);
+					position=number-Calculate_Power(n.getLevel()-1);
 					for(Node m: lst_Nodes) {
-						if(m.level==n.level-1&&m.position==position) {
-							n.parent=m.number;
+						if(m.getLevel()==n.getLevel()-1&&m.getPosition()==position) {
+							n.setParent(m.getNumber());
 							break;
 						}
 					}
@@ -105,14 +105,14 @@ public class Heapsort {
 		private static void Search_Children() {
 			// TODO Auto-generated method stub
 			for(Node n: lst_Nodes) {
-				if(n.level<levels) {
-					n.children1 = n.position + Calculate_Power(n.level);
-					if(n.children1>numbers.length) {
-						n.children1=0;
+				if(n.getLevel()<levels) {
+					n.setChildren1(n.getPosition() + Calculate_Power(n.getLevel()));
+					if(n.getChildren1()>numbers.length) {
+						n.setChildren1(0);
 					}
-					n.children2 = n.position + Calculate_Power(n.level) + 1;
-					if(n.children2>numbers.length) {
-						n.children2=0;
+					n.setChildren2(n.getPosition()+ Calculate_Power(n.getLevel()) + 1);
+					if(n.getChildren2()>numbers.length) {
+						n.setChildren2(0);
 					}
 				}
 			}
@@ -123,10 +123,10 @@ public class Heapsort {
 			akt_size=Calculate_Power(akt_level)-1;
 			if(akt_size<=1) {
 				Node akt_node = new Node();
-				akt_node.number=akt_number;
-				akt_node.position=akt_position;
-				akt_node.level=akt_level;
-				akt_node.value=z;
+				akt_node.setNumber(akt_number);;
+				akt_node.setPosition(akt_position);
+				akt_node.setLevel(akt_level);;
+				akt_node.setValue(z);;
 				lst_Nodes.add(akt_node);
 				akt_level++;
 				akt_number++;
@@ -135,10 +135,10 @@ public class Heapsort {
 			else {
 				if(akt_number>=akt_size) {
 					Node akt_node = new Node();
-					akt_node.position=akt_position;
-					akt_node.number=akt_number;
-					akt_node.level=akt_level;
-					akt_node.value=z;
+					akt_node.setPosition(akt_position);;
+					akt_node.setNumber(akt_number);;
+					akt_node.setLevel(akt_level);;
+					akt_node.setValue(z);;
 					lst_Nodes.add(akt_node);
 					akt_level++;
 					akt_position=0;
@@ -147,10 +147,10 @@ public class Heapsort {
 				}
 				else {
 					Node akt_node = new Node();
-					akt_node.position=akt_position;
-					akt_node.number=akt_number;
-					akt_node.level=akt_level;
-					akt_node.value=z;
+					akt_node.setPosition(akt_position);;
+					akt_node.setNumber(akt_number);;
+					akt_node.setLevel(akt_level);;
+					akt_node.setValue(z);
 					lst_Nodes.add(akt_node);
 					akt_position=akt_position+2;
 					akt_number++;
