@@ -16,7 +16,7 @@ public class Combsort {
 		String help;
         start=System.currentTimeMillis();
 		
-        File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
+        File f = new File("src//Arrays//Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
