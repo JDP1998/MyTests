@@ -16,7 +16,7 @@ public class Selectionsort {
 		
 		start=System.currentTimeMillis();
 		
-		File f = new File("src//Arrays//Numbers.txt");
+		File f = new File("C:\\Users\\jportzeh\\git\\MyTests\\src\\Arrays\\Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
@@ -56,7 +56,7 @@ public class Selectionsort {
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 		
 
-		File f2 = new File("src//Arrays//Time.txt");
+		File f2 = new File("C:\\Users\\jportzeh\\git\\MyTests\\src\\Arrays\\Time.txt");
 		if(f2.exists()==false) {
 			f2.createNewFile();
 		}

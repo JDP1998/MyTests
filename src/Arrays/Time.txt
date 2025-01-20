@@ -1,1 +1,1 @@
-Selectionsort: 2322
+Selectionsort: 1875
