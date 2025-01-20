@@ -1,15 +1,17 @@
 package Arrays;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Insertsort {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		int[] numbers = new int[10000];
+		int[] numbers = new int[100000];
 		int tausch,counter = 0, i = 1, l = 0, k, place = 0;
 		boolean is_found = false;
 		long start, end, time;
@@ -48,5 +50,15 @@ public class Insertsort {
 		end=System.currentTimeMillis();
 		time=end-start;
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
+		
+		File f2 = new File("src//Arrays//Time.txt");
+		if(f2.exists()==false) {
+			f2.createNewFile();
+		}
+		
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(f2,true));
+		bWriter2.write("Insertsort: "+time);
+		bWriter2.write("\r\n");
+		bWriter2.close();
 	}
 }

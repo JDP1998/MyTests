@@ -10,7 +10,7 @@ public class Selectionsort {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [10000];
+		int [] numbers = new int [100000];
 		int k = 0,i,min = 0,counter=0;
 		long start, end, time;
 		
@@ -56,6 +56,15 @@ public class Selectionsort {
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 		
 
+		File f2 = new File("src//Arrays//Time.txt");
+		if(f2.exists()==false) {
+			f2.createNewFile();
+		}
+		
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(f2,false));
+		bWriter2.write("Selectionsort: "+time);
+		bWriter2.write("\r\n");
+		bWriter2.close();
 	}
 
 }

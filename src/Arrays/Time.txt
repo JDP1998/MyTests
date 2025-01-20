@@ -1,0 +1,6 @@
+Selectionsort: 188
+Insertsort: 169
+Heapsort: 233
+Gnomesort: 169
+Combsort: 100
+Bubblesort: 249
