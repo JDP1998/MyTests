@@ -18,7 +18,7 @@ public class Heapsort {
 		String help;
 		start = System.currentTimeMillis();
 		
-		File f = new File("src//Arrays//Numbers.txt");
+		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
@@ -58,7 +58,7 @@ public class Heapsort {
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 		
 		
-		File f2 = new File("src//Arrays//Time.txt");
+		File f2 = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Time.txt");
 		if(f2.exists()==false) {
 			f2.createNewFile();
 		}
