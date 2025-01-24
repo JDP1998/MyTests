@@ -10,7 +10,7 @@ public class Selectionsort {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [100000];
+		int [] numbers = new int [10000];
 		int k = 0,i,min = 0,counter=0;
 		long start, end, time;
 		
@@ -24,7 +24,7 @@ public class Selectionsort {
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(f,false));
 		
 		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*100000)+1; 
+			numbers [counter] = (int)(Math.random()*10)+1; 
 			bWriter.write(String.valueOf(numbers[counter]));
 			bWriter.write("\r\n");
 		}

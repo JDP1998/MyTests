@@ -14,7 +14,6 @@ public class Heapsort {
 		int[] numbers = new int[100000];
 		int k,i=0,parent=0,counter=0;
 		long start, end, time;
-		boolean is_sorted=false;
 		String help;
 		start = System.currentTimeMillis();
 		
