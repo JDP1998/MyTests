@@ -324,19 +324,5 @@ public class Racemanager {
 		}
 		bReader.close();
 	}
-	
-	public static void update_teams() {
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
-		if (file.exists() == false) {
-			file.createNewFile();
-		}
-		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file, false));
-		for (Team t : lst_Teams) {
-			bWriter.write(String.valueOf(t.getName() + ":" + t.getPoints()));
-			bWriter.write("\r\n");
-		}
-		bWriter.close();
-		
-	}
 
 }
