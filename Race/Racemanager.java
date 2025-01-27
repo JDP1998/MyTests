@@ -222,7 +222,7 @@ public class Racemanager {
 			r.setRacerName(parts[0]);
 			r.setRacerPoints(Integer.valueOf(parts[1]));
 			r.setTeam(lst_Teams.get(akt_team).getName());
-			if(counter%4==0&&counter<30) {
+			if(counter%4==3&&counter<30) {
 				akt_team++;
 			}
 			lst_Racers.add(r);
