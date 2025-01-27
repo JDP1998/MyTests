@@ -209,6 +209,7 @@ public class Racemanager {
 	public static void fill_list_racers() throws IOException {
 		// TODO Auto-generated method stub
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Racers.txt");
+		int akt_team=0,counter=0;
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -220,7 +221,12 @@ public class Racemanager {
 			parts = line.split(":");
 			r.setRacerName(parts[0]);
 			r.setRacerPoints(Integer.valueOf(parts[1]));
+			r.setTeam(lst_Teams.get(akt_team).getName());
+			if(counter%4==0&&counter<30) {
+				akt_team++;
+			}
 			lst_Racers.add(r);
+			counter++;
 		}
 		bReader.close();
 	}
