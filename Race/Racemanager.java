@@ -23,6 +23,7 @@ public class Racemanager {
     public static ArrayList <Racer> lst_Racers = new ArrayList<>();
     public static ArrayList <Venue> lst_Venues = new ArrayList<>();
     public static ArrayList <Point> lst_Points = new ArrayList<>();
+    public static ArrayList <Team>  lst_Teams = new ArrayList<>();
     
     public static ArrayList <Point> getPoints() {
     	return lst_Points;
@@ -249,16 +250,6 @@ public class Racemanager {
 		bWriter2.close();
 	}
 
-	/*public static void reset_venues() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void reset_points() {
-		// TODO Auto-generated method stub
-		
-	}*/
-
 	public static void reset_counter() throws IOException {
 		// TODO Auto-generated method stub
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Counter.txt");
@@ -304,10 +295,24 @@ public class Racemanager {
 		bWriter.write("\r\n");
 		bWriter.close();
 	}
-
-	/*public static void reset_standings() {
+	
+	public static void fill_list_teams() throws IOException {
 		// TODO Auto-generated method stub
-		
-	}*/
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		if (file.exists() == false) {
+			file.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		String line;
+		String[] parts;
+		while ((line = bReader.readLine()) != null) {
+			Team t = new Team();
+			parts = line.split(":");
+			t.setName(parts[0]);
+			t.setPoints(Integer.valueOf(parts[1]));
+			lst_Teams.add(t);
+		}
+		bReader.close();
+	}
 
 }

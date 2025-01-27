@@ -11,6 +11,7 @@ public class Racer extends Thread {
     public String getTeam() {
 		return teamname;
     }
+    
     public boolean getPrinted() {
     	return is_printed;
     	
