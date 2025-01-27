@@ -26,6 +26,7 @@ public class dlg_Race {
 		Racemanager.fill_list_venues();
 		Racemanager.fill_list_racers();
 		Racemanager.fill_list_points();
+		Racemanager.fill_list_teams();
 		
 		racecount=Racemanager.getVenueCount()+1;
 		
