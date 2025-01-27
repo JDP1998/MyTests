@@ -75,6 +75,7 @@ public class dlg_Race {
 						if(r3.getRacerPosition()==count) {
 								System.out.println(r3.getRacerName() + " has finished the race in position " + r3.getRacerPosition() + "! She races for team "+r3.getTeam()+"!");
 								r3.setRacerPoints(r3.getRacerPoints()+Racemanager.getPoints().get(count-1).getPoint());
+								Racemanager.lst_Teams.get(r3.teamnumber).setPoints(r3.getRacerPoints()+Racemanager.getPoints().get(count-1).getPoint());
 								break;
 						}
 					}
@@ -91,6 +92,7 @@ public class dlg_Race {
 		System.out.println("The race last "+minutes+" minutes and "+seconds+" seconds. Thank you for joyning");
 		
 		Racemanager.update_table();
+		Racemanager.update_teams();
 		Racemanager.update_counter();
 		
 		System.out.println("\r\n");

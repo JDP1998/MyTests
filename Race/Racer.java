@@ -2,8 +2,15 @@ package Race;
 
 public class Racer extends Thread {
 	public String name,teamname;
-	public  int position,points;
+	public  int position,points,teamnumber;
     public  boolean is_printed;
+    
+    public void setTeamnumber(int teamnumber) {
+    	this.teamname=teamname;
+    }
+    public int getTeamnumber() {
+		return teamnumber;
+    }
     
     public void setTeam(String teamname) {
     	this.teamname=teamname;
