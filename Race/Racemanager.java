@@ -25,6 +25,13 @@ public class Racemanager {
     public static ArrayList <Point> lst_Points = new ArrayList<>();
     public static ArrayList <Team>  lst_Teams = new ArrayList<>();
     
+    public static ArrayList <Team> getTeams() {
+    	return lst_Teams;
+    	
+    }
+    public void setTeams(ArrayList <Team> lst_Teams) {
+    }
+    
     public static ArrayList <Point> getPoints() {
     	return lst_Points;
     	
@@ -84,6 +91,17 @@ public class Racemanager {
 			bWriter.write("\r\n");
 		}
 		bWriter.close();
+		
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(file2, false));
+		for (Team t : lst_Teams) {
+			bWriter2.write(String.valueOf(t.getName() + ":" + t.getPoints()));
+			bWriter2.write("\r\n");
+		}
+		bWriter2.close();
 
 	}
 

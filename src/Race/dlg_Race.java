@@ -73,8 +73,12 @@ public class dlg_Race {
 				for(count=1;count<=Racemanager.getRacers().size();count++) {
 					for(Racer r3 : Racemanager.getRacers()) {
 						if(r3.getRacerPosition()==count) {
-								System.out.println(r3.getRacerName() + " has finished the race in position " + r3.getRacerPosition() + " and is racing for "+r3.getTeam()+"!");
+								System.out.println(r3.getRacerName() + " has finished the race in position " + r3.getRacerPosition() + "! She races for team "+r3.getTeam()+"!");
 								r3.setRacerPoints(r3.getRacerPoints()+Racemanager.getPoints().get(count-1).getPoint());
+								for(Team t: Racemanager.getTeams()) {
+									if(t.getName().equals(r3.getName()))
+									t.setPoints(t.getPoints()+Racemanager.getPoints().get(count-1).getPoint());
+								}
 								break;
 						}
 					}

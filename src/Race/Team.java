@@ -2,7 +2,7 @@ package Race;
 
 public class Team {
 	String name;
-	int points;
+	int points,number;
 	
 	public void setName(String name) {
 		this.name=name;
@@ -18,6 +18,14 @@ public class Team {
 	
 	public int getPoints() {
 		return points;
+	}
+	
+	public void setNumber(int number) {
+		this.number=number;
+	}
+	
+	public int getNumber() {
+		return number;
 	}
 
 }
