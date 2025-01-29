@@ -108,7 +108,8 @@ public class Racemanager {
 	public static void get_Standings() throws IOException {
 		// TODO Auto-generated method stub
 		int [] points = new int[33];
-		int i=0;
+		int k,counter=0,i=0;
+		boolean is_sorted=true;
 		String line;
 		for (Racer r : lst_Racers) {
 			points[i]=r.getRacerPoints();
@@ -136,6 +137,23 @@ public class Racemanager {
 				}
 			}
 			bWriter.close();
+			System.out.println("Here are the updated Team standings!");
+			System.out.println("\r\n");
+			int [] teampoints = new int [8];
+			for(Team t: lst_Teams) {
+				teampoints[counter]=t.getPoints();
+				counter++;
+			}
+			Arrays.sort(teampoints);
+			counter=teampoints.length-1;
+			for(counter=teampoints.length-1;counter>=0;counter--) {
+				for(Team t: lst_Teams) {
+					if(teampoints[counter]==t.getPoints()) {
+						System.out.println(t.getName()+":"+t.getPoints());
+						System.out.println("\r\n");
+					}
+				}
+			}
 
 		} else {
 			for (i = points.length - 1; i >= 0; i--) {
