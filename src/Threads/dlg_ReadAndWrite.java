@@ -2,12 +2,11 @@ package Threads;
 
 
 
-public class dlg_ReadAndRide {
+public class dlg_ReadAndWrite {
 	public static int number=0;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int i=1,anz=10;
-		
 		while(i<=anz) {
 			Reader r = new Reader();
 			Writer w = new Writer();
@@ -17,7 +16,6 @@ public class dlg_ReadAndRide {
 			write_thread.start();
 			i++;
 		}
-		
 		System.out.println("Number "+number);
 
 	}
