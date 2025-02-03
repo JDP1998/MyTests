@@ -24,7 +24,7 @@ public class Selectionsort {
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(f,false));
 		
 		for(counter=0;counter<=numbers.length-1;counter++) {
-			numbers [counter] = (int)(Math.random()*10)+1; 
+			numbers [counter] = (int)(Math.random()*10000)+1; 
 			bWriter.write(String.valueOf(numbers[counter]));
 			bWriter.write("\r\n");
 		}
