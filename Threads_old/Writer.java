@@ -1,4 +1,4 @@
-package Threads;
+package Threads_old;
 
 public class Writer implements Runnable{
 
