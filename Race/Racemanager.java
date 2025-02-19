@@ -291,6 +291,17 @@ public class Racemanager {
 			bWriter2.write("\r\n");
 		}
 		bWriter2.close();
+		
+		File file3 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		if (file3.exists() == false) {
+			file3.createNewFile();
+		}
+		BufferedWriter bWriter3 = new BufferedWriter(new FileWriter(file3, false));
+		for (Team t : lst_Teams) {
+			bWriter3.write(String.valueOf(t.getName() + ":0"));
+			bWriter3.write("\r\n");
+		}
+		bWriter3.close();
 	}
 
 	public static void reset_counter() throws IOException {
@@ -337,6 +348,21 @@ public class Racemanager {
 		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+points+" points."));
 		bWriter.write("\r\n");
 		bWriter.close();
+	}
+	
+	public static void print_teamwinner() {
+		int [] points = new int [8];
+		int i=0;
+		for(i=0;i<=points.length-1;i++) {
+			points[i]=lst_Teams.get(i).getPoints();
+		}
+		Arrays.sort(points);
+		
+		for(Team t: lst_Teams) {
+			if(t.getPoints()==points[0]) {
+				System.out.println("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points.");
+			}
+		}
 	}
 	
 	public static void fill_list_teams() throws IOException {
