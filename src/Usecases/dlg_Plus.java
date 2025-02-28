@@ -6,7 +6,7 @@ public class dlg_Plus {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		size=(int)(Math.random()*100)+1;
+		size=(int)(Math.random()*10)+1;
 		draw_header();
 		draw_body();
 		draw_header();
