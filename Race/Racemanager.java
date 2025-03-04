@@ -345,7 +345,7 @@ public class Racemanager {
 			file2.createNewFile();
 		}
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
-		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+points+" points."));
+		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+points+" points"));
 		bWriter.write("\r\n");
 		bWriter.close();
 	}
@@ -357,10 +357,16 @@ public class Racemanager {
 			points[i]=lst_Teams.get(i).getPoints();
 		}
 		Arrays.sort(points);
-		
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\TeamWinners.txt");
+		if(file.exists()==true) {
+			file.createNewFile();
+		}
+		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file, true));
 		for(Team t: lst_Teams) {
 			if(t.getPoints()==points[0]) {
-				System.out.println("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points.");
+				System.out.println("The winning team is "+t.getName()+" with "+t.getPoints());
+				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points"));
+				bWriter.close();
 			}
 		}
 	}
