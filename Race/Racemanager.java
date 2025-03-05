@@ -350,7 +350,7 @@ public class Racemanager {
 		bWriter.close();
 	}
 	
-	public static void print_teamwinner() {
+	public static void print_teamwinner() throws IOException {
 		int [] points = new int [8];
 		int i=0;
 		for(i=0;i<=points.length-1;i++) {
