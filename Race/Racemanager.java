@@ -420,7 +420,7 @@ public class Racemanager {
 			teile=line2.split(":");
 			Racer r = new Racer();
 			r.setName(teile[0]);
-			r.setRacerPoints(teile[1]);
+			r.setRacerPoints(Integer.valueOf(teile[1]);
 			lst_History.add(r);
 		}
 		bReader2.close();
