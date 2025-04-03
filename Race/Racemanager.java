@@ -424,7 +424,7 @@ public class Racemanager {
 			lst_History.add(r);
 		}
 		bReader2.close();
-		for(String s : teile) {
+		for(String s : racer[]) {
 			for(Racer r2 : lst_History) {
 				if(s.equals(r2.getName())==true) {
 					r2.setRacerPoints(r2.getRacerPoints()+points);
