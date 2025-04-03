@@ -415,12 +415,12 @@ public class Racemanager {
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
-		BufferedReader bReader = new BufferedReader(new FileReader (file2));
-		while((line2 = bReader.readLine()) != null) {
+		BufferedReader bReader2 = new BufferedReader(new FileReader (file2));
+		while((line2 = bReader2.readLine()) != null) {
 			teile=line2.split(":");
 			Racer r = new Racer();
 			r.setName(teile[0]);
-			r.setRacerPoints(Integer.valueOf(teile[1]);
+			r.setRacerPoints(Integer.valueOf(teile[1]));
 			lst_History.add(r);
 		}
 		bReader2.close();
