@@ -105,6 +105,7 @@ public class dlg_Race {
 		Racemanager.get_Standings();
 		
 		if(racecount==20) {
+			Racemanager.update_history();
 			Racemanager.print_winner();
 			Racemanager.print_teamwinner();
 			Racemanager.reset_table();

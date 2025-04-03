@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+import javax.sound.sampled.Line;
+
 
 
 public class Racemanager {
@@ -391,6 +393,51 @@ public class Racemanager {
 			counter++;
 		}
 		bReader.close();
+	}
+	public static void update_history() throws IOException {
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+		String [] racer = new String[32];
+		String [] teile;
+		String line, line2;
+		int counter=0,points=32;
+		if(file.exists()==false) {
+			file.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		while((line = bReader.readLine()) != null) {
+			teile=line.split(":");
+			racer[counter]=teile[0];
+			counter++;
+		}
+		bReader.close();
+		ArrayList <Racer> lst_History = new ArrayList();
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\History.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader (file2));
+		while((line2 = bReader.readLine()) != null) {
+			teile=line2.split(":");
+			Racer r = new Racer();
+			r.setName(teile[0]);
+			r.setRacerPoints(teile[1]);
+			lst_History.add(r);
+		}
+		bReader2.close();
+		for(String s : teile) {
+			for(Racer r2 : lst_History) {
+				if(s.equals(r2.getName()==true)) {
+					r2.setRacerPoints(r2.getRacerPoints()+points);
+					points--;
+				}
+			}
+		}
+		BufferedWriter bWriter = new BufferedWriter(new BufferedWriter(file2, false));
+		for(Racer r3: lst_History) {
+			bWriter.write(r3.getName()+":"+String.valueOf(r3.getRacerPoints()));
+		}
+		bWriter.close();
+		
 	}
 
 }
