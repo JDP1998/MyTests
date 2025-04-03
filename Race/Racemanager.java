@@ -396,7 +396,7 @@ public class Racemanager {
 	}
 	public static void update_history() throws IOException {
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
-		String [] racer = new String[32];
+		String [] racerhistory = new String[32];
 		String [] teile;
 		String line, line2;
 		int counter=0,points=32;
@@ -406,7 +406,7 @@ public class Racemanager {
 		BufferedReader bReader = new BufferedReader(new FileReader(file));
 		while((line = bReader.readLine()) != null) {
 			teile=line.split(":");
-			racer[counter]=teile[0];
+			racerhistory[counter]=teile[0];
 			counter++;
 		}
 		bReader.close();
@@ -424,7 +424,7 @@ public class Racemanager {
 			lst_History.add(r);
 		}
 		bReader2.close();
-		for(String s : racer[]) {
+		for(String s : racerhistory) {
 			for(Racer r2 : lst_History) {
 				if(s.equals(r2.getName())==true) {
 					r2.setRacerPoints(r2.getRacerPoints()+points);
