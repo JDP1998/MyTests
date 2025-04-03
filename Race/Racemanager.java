@@ -432,7 +432,7 @@ public class Racemanager {
 				}
 			}
 		}
-		BufferedWriter bWriter = new BufferedWriter(new BufferedWriter(file2, false));
+		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, false));
 		for(Racer r3: lst_History) {
 			bWriter.write(r3.getName()+":"+String.valueOf(r3.getRacerPoints()));
 		}
