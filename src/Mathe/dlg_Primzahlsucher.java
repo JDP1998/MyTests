@@ -3,7 +3,7 @@ package Mathe;
 import java.util.ArrayList;
 
 public class dlg_Primzahlsucher {
-	public static int bereich,counter;
+	public static int paare=0,bereich,counter;
 	public static ArrayList <Integer> lst_Primzahlen = new ArrayList(); 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,7 +16,7 @@ public class dlg_Primzahlsucher {
 			System.out.println(i);
 		}
 		System.out.println("\r\n");
-		System.out.println("Es wurden "+lst_Primzahlen.size()+" Primzahlen gefunden");
+		System.out.println("Es wurden "+lst_Primzahlen.size()+" Primzahlen und "+paare+" Primzahlpaare gefunden");
 
 	}
 	private static void Primzahl_suchen(int zahl) {
@@ -35,6 +35,13 @@ public class dlg_Primzahlsucher {
 			}
 			if(is_primzahl==true) {
 				lst_Primzahlen.add(counter);
+			}
+			counter++;
+		}
+		counter=1;
+		while(counter<=lst_Primzahlen.size()-1) {
+			if(lst_Primzahlen.get(counter)-lst_Primzahlen.get(counter-1)==2) {
+				paare++;
 			}
 			counter++;
 		}
