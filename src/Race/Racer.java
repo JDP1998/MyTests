@@ -1,9 +1,23 @@
 package Race;
 
 public class Racer extends Thread {
-	public String name;
-	public  int position,points;
+	public String name,teamname;
+	public  int position,points,teamnumber;
     public  boolean is_printed;
+    
+    public void setTeamnumber(int teamnumber) {
+    	this.teamname=teamname;
+    }
+    public int getTeamnumber() {
+		return teamnumber;
+    }
+    
+    public void setTeam(String teamname) {
+    	this.teamname=teamname;
+    }
+    public String getTeam() {
+		return teamname;
+    }
     
     public boolean getPrinted() {
     	return is_printed;
@@ -85,7 +99,7 @@ public class Racer extends Thread {
 			break;
 		}
 		if(position==20) {
-			System.out.println("The rest wont receive any points!");
+			System.out.println("No points are given anymore!");
 		}
 	}
 

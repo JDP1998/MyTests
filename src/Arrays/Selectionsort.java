@@ -16,7 +16,7 @@ public class Selectionsort {
 		
 		start=System.currentTimeMillis();
 		
-		File f = new File("src//Arrays//Numbers.txt");
+		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
@@ -56,6 +56,15 @@ public class Selectionsort {
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 		
 
+		File f2 = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Time.txt");
+		if(f2.exists()==false) {
+			f2.createNewFile();
+		}
+		
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(f2,false));
+		bWriter2.write("Selectionsort: "+time);
+		bWriter2.write("\r\n");
+		bWriter2.close();
 	}
 
 }

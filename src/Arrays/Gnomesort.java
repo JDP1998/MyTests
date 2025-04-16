@@ -11,13 +11,13 @@ public class Gnomesort {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		int [] numbers = new int [10000];
+		int [] numbers = new int [100000];
 		int k,gnome=0,counter=0;
 		long start, end, time;
 		String help;
 		start=System.currentTimeMillis();
 		
-		File f = new File("src//Arrays//Numbers.txt");
+		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Numbers.txt");
 		if(f.exists()==false) {
 			f.createNewFile();
 		}
@@ -51,6 +51,16 @@ public class Gnomesort {
 		time=end-start;
 		System.out.println("Es hat "+time+" Millisekunden gedauert!");
 
+		
+		File f2 = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Time.txt");
+		if(f2.exists()==false) {
+			f2.createNewFile();
+		}
+		
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(f2,true));
+		bWriter2.write("Gnomesort: "+time);
+		bWriter2.write("\r\n");
+		bWriter2.close();
 	}
 
 }

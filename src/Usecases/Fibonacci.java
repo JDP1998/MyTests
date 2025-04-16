@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Fibonacci {
 public static void main (String[] args) throws IOException {
-	File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Time.txt");
+	File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Fibonacci.txt");
 	String mstring,sstring;
 	if(f.exists()==false) {
 		f.createNewFile();

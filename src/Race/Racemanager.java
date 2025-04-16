@@ -23,6 +23,14 @@ public class Racemanager {
     public static ArrayList <Racer> lst_Racers = new ArrayList<>();
     public static ArrayList <Venue> lst_Venues = new ArrayList<>();
     public static ArrayList <Point> lst_Points = new ArrayList<>();
+    public static ArrayList <Team>  lst_Teams = new ArrayList<>();
+    
+    public static ArrayList <Team> getTeams() {
+    	return lst_Teams;
+    	
+    }
+    public void setTeams(ArrayList <Team> lst_Teams) {
+    }
     
     public static ArrayList <Point> getPoints() {
     	return lst_Points;
@@ -83,13 +91,25 @@ public class Racemanager {
 			bWriter.write("\r\n");
 		}
 		bWriter.close();
+		
+		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		if (file2.exists() == false) {
+			file2.createNewFile();
+		}
+		BufferedWriter bWriter2 = new BufferedWriter(new FileWriter(file2, false));
+		for (Team t : lst_Teams) {
+			bWriter2.write(String.valueOf(t.getName() + ":" + t.getPoints()));
+			bWriter2.write("\r\n");
+		}
+		bWriter2.close();
 
 	}
 
 	public static void get_Standings() throws IOException {
 		// TODO Auto-generated method stub
 		int [] points = new int[33];
-		int i=0;
+		int k,counter=0,i=0;
+		boolean is_sorted=true;
 		String line;
 		for (Racer r : lst_Racers) {
 			points[i]=r.getRacerPoints();
@@ -117,6 +137,23 @@ public class Racemanager {
 				}
 			}
 			bWriter.close();
+			System.out.println("Here are the updated Team standings!");
+			System.out.println("\r\n");
+			int [] teampoints = new int [8];
+			for(Team t: lst_Teams) {
+				teampoints[counter]=t.getPoints();
+				counter++;
+			}
+			Arrays.sort(teampoints);
+			counter=teampoints.length-1;
+			for(counter=teampoints.length-1;counter>=0;counter--) {
+				for(Team t: lst_Teams) {
+					if(teampoints[counter]==t.getPoints()) {
+						System.out.println(t.getName()+":"+t.getPoints());
+						System.out.println("\r\n");
+					}
+				}
+			}
 
 		} else {
 			for (i = points.length - 1; i >= 0; i--) {
@@ -208,6 +245,7 @@ public class Racemanager {
 	public static void fill_list_racers() throws IOException {
 		// TODO Auto-generated method stub
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Racers.txt");
+		int akt_team=0,counter=0;
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -219,7 +257,13 @@ public class Racemanager {
 			parts = line.split(":");
 			r.setRacerName(parts[0]);
 			r.setRacerPoints(Integer.valueOf(parts[1]));
+			r.setTeam(lst_Teams.get(akt_team).getName());
+			r.setTeamnumber(akt_team);
+			if(counter%4==3&&counter<30) {
+				akt_team++;
+			}
 			lst_Racers.add(r);
+			counter++;
 		}
 		bReader.close();
 	}
@@ -248,16 +292,6 @@ public class Racemanager {
 		}
 		bWriter2.close();
 	}
-
-	/*public static void reset_venues() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void reset_points() {
-		// TODO Auto-generated method stub
-		
-	}*/
 
 	public static void reset_counter() throws IOException {
 		// TODO Auto-generated method stub
@@ -304,10 +338,27 @@ public class Racemanager {
 		bWriter.write("\r\n");
 		bWriter.close();
 	}
-
-	/*public static void reset_standings() {
+	
+	public static void fill_list_teams() throws IOException {
 		// TODO Auto-generated method stub
-		
-	}*/
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		int counter=0;
+		if (file.exists() == false) {
+			file.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		String line;
+		String[] parts;
+		while ((line = bReader.readLine()) != null) {
+			Team t = new Team();
+			parts = line.split(":");
+			t.setName(parts[0]);
+			t.setNumber(counter);
+			t.setPoints(Integer.valueOf(parts[1]));
+			lst_Teams.add(t);
+			counter++;
+		}
+		bReader.close();
+	}
 
 }
