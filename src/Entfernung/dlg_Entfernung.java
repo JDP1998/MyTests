@@ -59,7 +59,7 @@ public class dlg_Entfernung {
 		int ergebnis = -1;
 		String ergebnis_string;
 		String [] arr;
-		System.setProperty("gecko.driver","C:\\Users\\Johannes\\OneDrive\\Dokumente\\Geckodriver\\geckodriver.exe");
+		System.setProperty("gecko.driver","Driver//geckodriver.exe");
 		WebDriver d = new FirefoxDriver();
 		d.manage().window().maximize();
 		d.get("https://www.google.de/maps/");
@@ -73,7 +73,7 @@ public class dlg_Entfernung {
 		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input")).sendKeys(stadt2);
 		Thread.sleep(2000);
 		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span")).click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		List <WebElement> lst_Elements = d.findElements(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div"));
 		if(lst_Elements.size()>0) {
 			ergebnis_string=d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")).getText();
