@@ -4,11 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class dlg_Entfernung {
 	public static ArrayList <Stadt> lst_Staedte = new ArrayList();
@@ -50,6 +55,7 @@ public class dlg_Entfernung {
 			System.out.println("Die Entfernung zwischen "+stadt1+" und "+stadt2+"ist "+loesung+"! Damit beträgt dein Guthaben "+guthaben+"!");
 			System.out.println("\r\n");
 		}
+		runde--;
 		System.out.println("Das Spiel ist vorbei. Du hast "+runde+" Runden überstanden!");
 		
 
@@ -61,6 +67,7 @@ public class dlg_Entfernung {
 		String [] arr;
 		System.setProperty("gecko.driver","Driver//geckodriver.exe");
 		WebDriver d = new FirefoxDriver();
+		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
 		d.get("https://www.google.de/maps/");
 		Thread.sleep(2000);
@@ -73,7 +80,7 @@ public class dlg_Entfernung {
 		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input")).sendKeys(stadt2);
 		Thread.sleep(2000);
 		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span")).click();
-		Thread.sleep(5000);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")));
 		List <WebElement> lst_Elements = d.findElements(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div"));
 		if(lst_Elements.size()>0) {
 			ergebnis_string=d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")).getText();

@@ -45,7 +45,7 @@ public class dlg_Spongebob {
 		// TODO Auto-generated method stub
 		String [] teile;
 		int loesung=-1;
-		System.setProperty("gecko.driver","C:\\Users\\Johannes\\OneDrive\\Dokumente\\Geckodriver\\geckodriver.exe");
+		System.setProperty("gecko.driver","Drivers//geckodriver.exe");
 		WebDriver d = new FirefoxDriver();
 		d.manage().window().maximize();
 		d.get("http://de.spongepedia.org/index.php/Hauptseite");
