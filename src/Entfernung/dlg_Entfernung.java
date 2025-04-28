@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class dlg_Entfernung {
 	public static ArrayList <Stadt> lst_Staedte = new ArrayList();
-
+    public static String url, cookies, route, city1, city2, search, result;
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
@@ -62,6 +62,13 @@ public class dlg_Entfernung {
 	}
 
 	private static int check_Distance(String stadt1, String stadt2) throws InterruptedException {
+		url="https://www.google.de/maps/";
+		cookies="/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/div[1]/form[2]/div/div/button/span[6]";
+		route="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[1]/div/div[1]/div[2]/button/span";
+		city1="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input";
+		city2="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input";
+		search="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span";
+		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div";
 		int ergebnis = -1;
 		String ergebnis_string;
 		String [] arr;
@@ -69,20 +76,28 @@ public class dlg_Entfernung {
 		WebDriver d = new FirefoxDriver();
 		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
-		d.get("https://www.google.de/maps/");
-		Thread.sleep(2000);
-		d.findElement(By.xpath("/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/div[1]/form[2]/div/div/button/span[6]")).click();
-		Thread.sleep(2000);
-		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[1]/div/div[1]/div[2]/button/span")).click();
-		Thread.sleep(2000);
-		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input")).sendKeys(stadt1);
-		Thread.sleep(2000);
-		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input")).sendKeys(stadt2);
-		Thread.sleep(2000);
-		d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span")).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")));
-		List <WebElement> lst_Elements = d.findElements(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div"));
-		if(lst_Elements.size()>0) {
+		try {
+			d.get(url);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cookies)));
+			d.findElement(By.xpath(cookies)).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(route)));
+			d.findElement(By.xpath(route)).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt1)));
+			d.findElement(By.xpath(city1)).sendKeys(stadt1);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt2)));
+			d.findElement(By.xpath(city2)).sendKeys(stadt2);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
+			d.findElement(By.xpath(search)).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
+			ergebnis_string = d.findElement(By.xpath(result)).getText();
+			arr = ergebnis_string.split(" ");
+			ergebnis_string = arr[0].replace(".", "");
+			ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
+		}
+		catch(TimeoutException e) {
+			
+		}
+		/*if(lst_Elements.size()>0) {
 			ergebnis_string=d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")).getText();
 			arr=ergebnis_string.split(" ");
 			ergebnis_string=arr[0].replace(".", "");
@@ -91,7 +106,7 @@ public class dlg_Entfernung {
 			}
 			
 			ergebnis=Integer.valueOf(ergebnis_string);
-		}
+		}*/
 		d.quit();
 		return ergebnis;
 	}
