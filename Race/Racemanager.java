@@ -139,6 +139,7 @@ public class Racemanager {
 				}
 			}
 			bWriter.close();
+			System.out.println("\r\n");
 			System.out.println("Here are the updated Team standings!");
 			System.out.println("\r\n");
 			int [] teampoints = new int [8];
@@ -152,7 +153,6 @@ public class Racemanager {
 				for(Team t: lst_Teams) {
 					if(teampoints[counter]==t.getPoints()) {
 						System.out.println(t.getName()+":"+t.getPoints());
-						System.out.println("\r\n");
 					}
 				}
 			}

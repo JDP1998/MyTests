@@ -4,14 +4,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class dlg_Spongebob {
 	public static ArrayList <Folge> lst_Folgen = new ArrayList();
@@ -32,6 +37,10 @@ public class dlg_Spongebob {
 					punkte++;
 				}
 			}
+			else {
+				System.out.println("Da ist ein Fehler passiert!");
+				counter=counter-1;
+			}
 			System.out.println("Die Folge ist aus Staffel "+loesung+". Damit hast du "+punkte+" Punkte!");
 			System.out.println("\r\n");
 			lst_Folgen.remove(zufall);
@@ -44,21 +53,27 @@ public class dlg_Spongebob {
 	private static int get_Season(String folge) throws InterruptedException {
 		// TODO Auto-generated method stub
 		String [] teile;
+		String search,searchbtn,result;
+		search="//*[@id=\"searchInput\"]";
+		searchbtn="//*[@id=\"searchButton\"]";
+		result="/html/body/div[3]/div/div[3]/div[4]/table[1]/tbody/tr[4]/td[2]";
 		int loesung=-1;
 		System.setProperty("gecko.driver","Drivers//geckodriver.exe");
 		WebDriver d = new FirefoxDriver();
+		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
 		d.get("http://de.spongepedia.org/index.php/Hauptseite");
-		Thread.sleep(2000);
-		d.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys(folge+" (Episode)");
-		Thread.sleep(2000);
-		d.findElement(By.xpath("//*[@id=\"searchButton\"]")).click();
-		Thread.sleep(2000);
-		List <WebElement> lst_Elements = d.findElements(By.xpath("/html/body/div[3]/div/div[3]/div[4]/table[1]/tbody/tr[4]/td[2]"));
-		Thread.sleep(2000);
-		if(lst_Elements.size()>0) {
-			teile = d.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[4]/table[1]/tbody/tr[4]/td[2]")).getText().split("/");
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
+		d.findElement(By.xpath(search)).sendKeys(folge+" (Episode)");
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(searchbtn)));
+		d.findElement(By.xpath(searchbtn)).click();
+		try{
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
+			teile = d.findElement(By.xpath(result)).getText().split("/");
 			loesung = Integer.valueOf(teile[0]);
+		}
+		catch(TimeoutException e) {
+			loesung=-1;
 		}
 		d.quit();
 		return loesung;

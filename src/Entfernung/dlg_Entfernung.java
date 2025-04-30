@@ -52,7 +52,7 @@ public class dlg_Entfernung {
 			}
 			guthaben=guthaben-differenz;
 			runde++;
-			System.out.println("Die Entfernung zwischen "+stadt1+" und "+stadt2+"ist "+loesung+"! Damit beträgt dein Guthaben "+guthaben+"!");
+			System.out.println("Die Entfernung zwischen "+stadt1+" und "+stadt2+" ist "+loesung+"! Damit beträgt dein Guthaben "+guthaben+"!");
 			System.out.println("\r\n");
 		}
 		runde--;
@@ -97,16 +97,6 @@ public class dlg_Entfernung {
 		catch(TimeoutException e) {
 			
 		}
-		/*if(lst_Elements.size()>0) {
-			ergebnis_string=d.findElement(By.xpath("/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div")).getText();
-			arr=ergebnis_string.split(" ");
-			ergebnis_string=arr[0].replace(".", "");
-			if(ergebnis_string.contains(",")) {
-				ergebnis_string=ergebnis_string.substring(0,ergebnis_string.length()-2);
-			}
-			
-			ergebnis=Integer.valueOf(ergebnis_string);
-		}*/
 		d.quit();
 		return ergebnis;
 	}
