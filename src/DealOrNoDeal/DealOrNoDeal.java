@@ -173,17 +173,17 @@ public class DealOrNoDeal extends JFrame {
 		pane.add("Rekorde",panel4);
 		
 		pane.add("Anleitung",panel5);
-		panel4.setLayout(null);
+		
 		panel4.setLayout(null);
 		
 		JLabel ldl_header = new JLabel("Rekorde");
 		ldl_header.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ldl_header.setBounds(25, 52, 143, 44);
+		ldl_header.setBounds(65, 52, 143, 44);
 		panel4.add(ldl_header);
 		
 		txt_1 = new JTextField();
 		txt_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txt_1.setBounds(110, 110, 200, 40);
+		txt_1.setBounds(65, 110, 200, 40);
 		txt_1.setText(String.valueOf(deals[0]));
 		txt_1.setEnabled(false);
 		panel4.add(txt_1);
@@ -191,7 +191,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		txt_2 = new JTextField();
 		txt_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txt_2.setBounds(110, 170, 200, 40);
+		txt_2.setBounds(65, 170, 200, 40);
 		txt_2.setText(String.valueOf(deals[1]));
 		txt_2.setEnabled(false);
 		panel4.add(txt_2);
@@ -199,7 +199,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		txt_3 = new JTextField();
 		txt_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txt_3.setBounds(110, 230, 200, 40);
+		txt_3.setBounds(65, 230, 200, 40);
 		txt_3.setText(String.valueOf(deals[2]));
 		txt_3.setEnabled(false);
 		panel4.add(txt_3);
@@ -207,7 +207,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		txt_4 = new JTextField();
 		txt_4.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txt_4.setBounds(110, 290, 200, 40);
+		txt_4.setBounds(65, 290, 200, 40);
 		txt_4.setText(String.valueOf(deals[3]));
 		txt_4.setEnabled(false);
 		panel4.add(txt_4);
@@ -215,11 +215,13 @@ public class DealOrNoDeal extends JFrame {
 		
 		txt_5 = new JTextField();
 		txt_5.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txt_5.setBounds(110, 350, 200, 40);
+		txt_5.setBounds(65, 350, 200, 40);
 		txt_5.setText(String.valueOf(deals[4]));
 		txt_5.setEnabled(false);
 		panel4.add(txt_5);
 		txt_5.setColumns(10);
+		
+		
 		panel5.setLayout(null);
 		
 		JLabel lbl_rules = new JLabel("");

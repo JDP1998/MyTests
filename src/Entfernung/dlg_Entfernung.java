@@ -94,7 +94,7 @@ public class dlg_Entfernung {
 			ergebnis_string = arr[0].replace(".", "");
 			ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
 		}
-		catch(TimeoutException e) {
+		catch(NoSuchElementException e) {
 			
 		}
 		d.quit();
