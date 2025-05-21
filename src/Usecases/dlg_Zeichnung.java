@@ -13,18 +13,16 @@ public class dlg_Zeichnung {
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
-		
-		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-		int random,linecounter=0,counter=0;
+		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file,false));
+		int character=65,random,linecounter=0,counter=0;
 		String druckzeile;
-		
 		while(linecounter<35) {
 			counter=0;
 			druckzeile="";
 			while(counter<170) {
 				random=(int)(Math.random()*100)+1;
 				if(random%2==0) {
-					druckzeile=druckzeile+"*";
+					druckzeile=druckzeile+"a";
 				}
 				else {
 					druckzeile=druckzeile+" ";
@@ -34,6 +32,7 @@ public class dlg_Zeichnung {
 			bufferedWriter.write(druckzeile);
 			bufferedWriter.write("\r\n");
 			linecounter++;
+			character++;
 		}
 		
 		bufferedWriter.close();

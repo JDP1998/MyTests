@@ -15,9 +15,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.description.type.TypeDescription.Generic.AnnotationReader.Delegator.ForLoadedExecutableExceptionType;
+
 public class dlg_Entfernung {
 	public static ArrayList <Stadt> lst_Staedte = new ArrayList();
-    public static String url, cookies, route, city1, city2, search, result;
+    public static String url, cookies, route, city1, city2, search, feet, result;
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
@@ -68,7 +70,9 @@ public class dlg_Entfernung {
 		city1="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input";
 		city2="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input";
 		search="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span";
-		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div";
+		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]";
+		feet="//*[@id=\"omnibox-directions\"]/div/div[2]/div/div/div/div[4]/button/div[1]/span[3]";
+		
 		int ergebnis = -1;
 		String ergebnis_string;
 		String [] arr;
@@ -88,17 +92,20 @@ public class dlg_Entfernung {
 			d.findElement(By.xpath(city2)).sendKeys(stadt2);
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
 			d.findElement(By.xpath(search)).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(feet)));
+			d.findElement(By.xpath(feet)).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
 			ergebnis_string = d.findElement(By.xpath(result)).getText();
 			arr = ergebnis_string.split(" ");
 			ergebnis_string = arr[0].replace(".", "");
 			ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
+			d.quit();
+			return ergebnis;
 		}
 		catch(NoSuchElementException e) {
-			
+			d.quit();
+			return 0;
 		}
-		d.quit();
-		return ergebnis;
 	}
 
 	private static void fill_List() throws IOException {
