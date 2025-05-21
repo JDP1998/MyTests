@@ -86,9 +86,9 @@ public class dlg_Entfernung {
 			d.findElement(By.xpath(cookies)).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(route)));
 			d.findElement(By.xpath(route)).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt1)));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city1)));
 			d.findElement(By.xpath(city1)).sendKeys(stadt1);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt2)));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city2)));
 			d.findElement(By.xpath(city2)).sendKeys(stadt2);
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
 			d.findElement(By.xpath(search)).click();
@@ -102,7 +102,7 @@ public class dlg_Entfernung {
 			d.quit();
 			return ergebnis;
 		}
-		catch(NoSuchElementException e) {
+		catch(TimeoutException | NoSuchElementException e) {
 			d.quit();
 			return 0;
 		}
