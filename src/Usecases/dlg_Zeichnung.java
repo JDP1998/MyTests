@@ -22,7 +22,7 @@ public class dlg_Zeichnung {
 			while(counter<170) {
 				random=(int)(Math.random()*100)+1;
 				if(random%2==0) {
-					druckzeile=druckzeile+"a";
+					druckzeile=druckzeile+(char)(character);
 				}
 				else {
 					druckzeile=druckzeile+" ";
