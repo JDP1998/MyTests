@@ -63,7 +63,7 @@ public class dlg_Entfernung {
 
 	}
 
-	private static int check_Distance(String stadt1, String stadt2) throws InterruptedException {
+	private static int check_Distance(String stadt1, String stadt2) throws InterruptedException, NoSuchElementException, TimeoutException {
 		url="https://www.google.de/maps/";
 		cookies="/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/div[1]/form[2]/div/div/button/span[6]";
 		route="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[1]/div/div[1]/div[2]/button/span";
@@ -80,32 +80,26 @@ public class dlg_Entfernung {
 		WebDriver d = new FirefoxDriver();
 		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
-		try {
-			d.get(url);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cookies)));
-			d.findElement(By.xpath(cookies)).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(route)));
-			d.findElement(By.xpath(route)).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city1)));
-			d.findElement(By.xpath(city1)).sendKeys(stadt1);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city2)));
-			d.findElement(By.xpath(city2)).sendKeys(stadt2);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
-			d.findElement(By.xpath(search)).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(feet)));
-			d.findElement(By.xpath(feet)).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
-			ergebnis_string = d.findElement(By.xpath(result)).getText();
-			arr = ergebnis_string.split(" ");
-			ergebnis_string = arr[0].replace(".", "");
-			ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
-			d.quit();
-			return ergebnis;
-		}
-		catch(TimeoutException | NoSuchElementException e) {
-			d.quit();
-			return 0;
-		}
+		d.get(url);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cookies)));
+		d.findElement(By.xpath(cookies)).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(route)));
+		d.findElement(By.xpath(route)).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt1)));
+		d.findElement(By.xpath(city1)).sendKeys(stadt1);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city2)));
+		d.findElement(By.xpath(city2)).sendKeys(stadt2);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
+		d.findElement(By.xpath(search)).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(feet)));
+		d.findElement(By.xpath(feet)).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
+		ergebnis_string = d.findElement(By.xpath(result)).getText();
+		arr = ergebnis_string.split(" ");
+		ergebnis_string = arr[0].replace(".", "");
+		ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
+		d.quit();
+		return ergebnis;
 	}
 
 	private static void fill_List() throws IOException {
