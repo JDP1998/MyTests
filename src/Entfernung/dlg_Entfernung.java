@@ -70,7 +70,7 @@ public class dlg_Entfernung {
 		city1="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input";
 		city2="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input";
 		search="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span";
-		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]";
+		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div";
 		feet="//*[@id=\"omnibox-directions\"]/div/div[2]/div/div/div/div[4]/button/div[1]/span[3]";
 		
 		int ergebnis = -1;
@@ -85,19 +85,17 @@ public class dlg_Entfernung {
 		d.findElement(By.xpath(cookies)).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(route)));
 		d.findElement(By.xpath(route)).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(stadt1)));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city1)));
 		d.findElement(By.xpath(city1)).sendKeys(stadt1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(city2)));
 		d.findElement(By.xpath(city2)).sendKeys(stadt2);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(search)));
 		d.findElement(By.xpath(search)).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(feet)));
-		d.findElement(By.xpath(feet)).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
 		ergebnis_string = d.findElement(By.xpath(result)).getText();
 		arr = ergebnis_string.split(" ");
 		ergebnis_string = arr[0].replace(".", "");
-		ergebnis_string = ergebnis_string.substring(0, ergebnis_string.length() - 2);
+		ergebnis = Integer.valueOf(ergebnis_string);
 		d.quit();
 		return ergebnis;
 	}
