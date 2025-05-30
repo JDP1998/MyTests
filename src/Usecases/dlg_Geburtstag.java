@@ -6,6 +6,7 @@ public class dlg_Geburtstag {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		System.out.println("Hallo Welt!");
 		int result = 0, day, year;
 		boolean cur_leapyear, next_leapyear;
 		day = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
