@@ -439,7 +439,8 @@ public class Racemanager {
 	
 	public static void update_wins() throws IOException {
 		String winner;
-		ArrayList <Racer> lst_GranPrix = new ArrayList(); 
+		String [] teile;
+		ArrayList <Racer> lst_GrandPrix = new ArrayList(); 
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\GrandPrixWins.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
