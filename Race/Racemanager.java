@@ -430,7 +430,7 @@ public class Racemanager {
 				r.setRacerPoints(r.getRacerPoints()+1);
 			}
 			bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
-			bWriter.write(("\r\n");
+			bWriter.write("\r\n");
 		}
 		bWriter.close();
 		
