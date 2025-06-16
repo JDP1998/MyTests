@@ -438,7 +438,37 @@ public class Racemanager {
 	}
 	
 	public static void update_wins() throws IOException {
-		
+		String winner;
+		ArrayList <Racer> lst_GranPrix = new ArrayList(); 
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\GrandPrixWins.txt");
+		if(file.exists()==false) {
+			file.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		while((line = bReader.readLine()) != null) {
+			Racer r = new Racer();
+			teile=line.split(":");
+			r.setRacerName(teile[0]);
+			r.setRacerPoints(Integer.valueOf(teile[1]));
+			lst_GrandPrix.add(r);
+			counter++;
+		}
+		bReader.close();
+		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file));
+		for(Racer r: lst_Racers) {
+			if(r.getRacerPosition()==1) {
+				winner=r.getRacerName();
+				break;
+			}
+		}
+		for(Racer r: lst_GranPrix) {
+			if(r.getRacerName().equals(winner)) {
+				r.setRacerPoints(r.getRacerPoints()+1);
+			}
+			bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
+			bWriter.write("\r\n");
+		}
+		bWriter.close();
 	}
 
 }
