@@ -1,0 +1,1 @@
+Der Benutzer muss die Koordinaten einer Hauptstadt erraten. Im Anschluss wird mit Maps das richtige Ergebnis gesucht. Die Differenz wird abgezogen vom Startkapital. Wenn das Startkapital unter 0 ist, ist das Spiel vorbei.
