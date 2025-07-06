@@ -94,7 +94,7 @@ public class dlg_Race {
 		seconds = (int) (time%60);
 		System.out.println("\r\n");
 		System.out.println("The race last "+minutes+" minutes and "+seconds+" seconds. Thank you for joyning");
-		
+		Racemanager.update_wins();
 		Racemanager.update_table();
 		Racemanager.update_counter();
 		
