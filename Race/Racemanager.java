@@ -476,7 +476,7 @@ public class Racemanager {
 			pointer=0;
 			point_max=0;
 			for(Racer r: lst_GrandPrix) {
-				if(Racemanager.getRacerPoints()>max) {
+				if(r.getRacerPoints()>max) {
 					point_max=pointer;
 				}
 				pointer++;
