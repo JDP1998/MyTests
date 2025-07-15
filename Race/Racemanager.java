@@ -367,6 +367,7 @@ public class Racemanager {
 		for(Team t: lst_Teams) {
 			if(t.getPoints()==points[0]) {
 				System.out.println("The winning team is "+t.getName()+" with "+t.getPoints());
+				bWriter.write("\r\n");
 				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points"));
 				bWriter.close();
 			}
@@ -438,9 +439,11 @@ public class Racemanager {
 	}
 	
 	public static void update_wins() throws IOException {
+		int max=0,pointer=0,point_max=0;
 		String winner="",line="";
 		String [] teile;
 		ArrayList <Racer> lst_GrandPrix = new ArrayList(); 
+		ArrayList <Racer> lst_GrandPrix_listed = new ArrayList(); 
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\GrandPrixWins.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
@@ -465,6 +468,23 @@ public class Racemanager {
 			if(r.getRacerName().equals(winner)) {
 				r.setRacerPoints(r.getRacerPoints()+1);
 			}
+			/*bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
+			bWriter.write("\r\n");*/
+		}
+		while(lst_GrandPrix.size()>1) {
+			max=lst_GrandPrix.get(0).getRacerPoints();
+			pointer=0;
+			point_max=0;
+			for(Race r: lst_GrandPrix) {
+				if(Racemanager.getRacerPoints()>max) {
+					point_max=pointer;
+				}
+				pointer++;
+			}
+			lst_GrandPrix_listed.add(lst_GrandPrix.get(point_max));
+			lst_GrandPrix.remove(point_max);
+		}
+		for(Racer r: lst_GrandPrix_listed) {
 			bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
 			bWriter.write("\r\n");
 		}
