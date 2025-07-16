@@ -80,19 +80,19 @@ public class Racer extends Thread {
 		switch (fallnr) {
 		case 0:
 			System.out.println(
-					name+" has finished the race. Her time is " + minutes + ":" + seconds + "!");
+					name+" from team "+teamname+" has finished the race. Her time is " + minutes + ":" + seconds + "!");
 			break;
 		case 1:
 			System.out.println(
-					name+" has finished the race. Her time is " + minutes + ":" + seconds + "!");
+					name+" from team "+teamname+" has finished the race. Her time is " + minutes + ":" + seconds + "!");
 			break;
 		case 2:
 			System.out.println(
-					name+" has finished the race. Her time is " + minutes + ":0" + seconds + "!");
+					name+" from team "+teamname+" has finished the race. Her time is " + minutes + ":0" + seconds + "!");
 			break;
 		case 3:
 			System.out.println(
-					name+" has finished the race. Her time is " + minutes + ":0" + seconds + "!");
+					name+" from team "+teamname+" has finished the race. Her time is " + minutes + ":0" + seconds + "!");
 			break;
 		default:
 			System.out.println("Dont make a fool out of me man!");

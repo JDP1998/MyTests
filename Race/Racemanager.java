@@ -401,7 +401,7 @@ public class Racemanager {
 		String [] racerhistory = new String[32];
 		String [] teile;
 		String line, line2;
-		int counter=0,points=32;
+		int counter=0,points=32,max=0,pointer=0,max_pointer=0;
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
@@ -416,6 +416,7 @@ public class Racemanager {
 		}
 		bReader.close();
 		ArrayList<Racer>lst_History=new ArrayList<>();
+		ArrayList<Racer>lst_History_sorted=new ArrayList<>();
 		BufferedReader bReader2 = new BufferedReader(new FileReader(file2));
 		while((line = bReader2.readLine()) != null) {
 			Racer r = new Racer();
@@ -426,11 +427,26 @@ public class Racemanager {
 		}
 		bReader2.close();
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2));
-		for(Racer r: lst_History) {
-			if(r.getRacerName().equals(racerhistory[0])) {
-				r.setRacerPoints(r.getRacerPoints()+1);
+		for (Racer r : lst_History) {
+			if (r.getRacerName().equals(racerhistory[0])) {
+				r.setRacerPoints(r.getRacerPoints() + 1);
 			}
-			bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
+		}
+		while(lst_History.size()>0) {
+			max=lst_History.get(0).getRacerPoints();
+			pointer=0;
+			max_pointer=0;
+			for (Racer r : lst_History) {
+				if (r.getRacerPoints()>max) {
+					max_pointer=pointer;
+				}
+				pointer++;
+			}
+			lst_History_sorted.add(lst_History.get(max_pointer));
+			lst_History.remove(max_pointer);
+		}
+		for (Racer r : lst_History_sorted) {
+			bWriter.write(r.getRacerName() + ":" + String.valueOf(r.getRacerPoints()));
 			bWriter.write("\r\n");
 		}
 		bWriter.close();
@@ -471,7 +487,7 @@ public class Racemanager {
 			/*bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
 			bWriter.write("\r\n");*/
 		}
-		while(lst_GrandPrix.size()>1) {
+		while(lst_GrandPrix.size()>0) {
 			max=lst_GrandPrix.get(0).getRacerPoints();
 			pointer=0;
 			point_max=0;
