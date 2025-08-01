@@ -7,14 +7,10 @@ public class dlg_Primzahlsucher {
 	public static ArrayList <Integer> lst_Primzahlen = new ArrayList(); 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		bereich = (int)(Math.random()*900000)+100000;
+		bereich = (int)(Math.random()*9000)+1000;
 		System.out.println("Es werden Primzahlen im Bereich bis "+bereich+" gesucht!");
 		System.out.println("\r\n");
 		Primzahl_suchen(bereich);
-		System.out.println("Primzahlen: ");
-		for(Integer i: lst_Primzahlen) {
-			System.out.println(i);
-		}
 		System.out.println("\r\n");
 		System.out.println("Es wurden "+lst_Primzahlen.size()+" Primzahlen und "+paare+" Primzahlpaare gefunden");
 
