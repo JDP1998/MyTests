@@ -14,8 +14,9 @@ public static void main (String[] args) throws IOException {
 	}
 	long start,end,time;
 	start=System.currentTimeMillis();
-	int seconds,minutes,i=0,z;
-	z=55;
+	int seconds,minutes,z;
+	long i=0;
+	z=46;
 	for(i=0;i<=z;i++) {
 		System.out.println("Fibonacci von "+i+" ist "+Fibonacci(i));
 	}
@@ -43,7 +44,7 @@ public static void main (String[] args) throws IOException {
 	bufferedWriter.close();
 }
 
-private static int Fibonacci(int i) {
+private static long Fibonacci(long i) {
 	// TODO Auto-generated method stub
 	if(i<=1) {
 		return 1;
