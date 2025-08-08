@@ -20,7 +20,7 @@ import javax.sound.sampled.Line;
 
 public class Racemanager {
 	
-	public static int seasoncount=0,position=0,venuecount=0;
+	public static int seasonwinnerpoints,seasoncount=0,position=0,venuecount=0;
 	public static boolean is_execution_2=false;
     public static ArrayList <Racer> lst_Racers = new ArrayList<>();
     public static ArrayList <Venue> lst_Venues = new ArrayList<>();
@@ -330,6 +330,7 @@ public class Racemanager {
 		// TODO Auto-generated method stub
 		String line,winner,points;
 		String teile[];
+		boolean record;
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
@@ -339,19 +340,46 @@ public class Racemanager {
 		bReader.close();
 		teile=line.split(":");
 		winner=teile[0];
-		points=teile[1];
+		seasonwinnerpoints=Integer.valueOf(teile[1]);
 		System.out.println("\r\n");
-		System.out.println("The winner is "+winner+" with "+points);
+		System.out.println("The winner is "+winner+" with "+seasonwinnerpoints);
 		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
-		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+points+" points"));
+		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points"));
 		bWriter.write("\r\n");
 		bWriter.close();
+		record=checkRecord();
+		if(record==true) {
+			System.out.println(winner+" has broken the record with an amazing "+seasonwinnerpoints+ "points. Congratulations!");
+		}
 	}
 	
+	private static boolean checkRecord() throws IOException {
+		// TODO Auto-generated method stub
+		ArrayList <Integer> lst_Points = new ArrayList<>(); 
+		String line;
+		String [] teile;
+		boolean new_record=false;
+		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
+		if(file.exists()==false) {
+			file.createNewFile();
+		}
+		BufferedReader bReader = new BufferedReader(new FileReader(file));
+		while((line=bReader.readLine())!=null) {
+			teile=line.split(":");
+			lst_Points.add(Integer.valueOf(teile[1]));
+		}
+		bReader.close();
+		for(Integer i : lst_Points) {
+			if(i>=seasonwinnerpoints) {
+				new_record=true;
+			}
+		}
+		return new_record;
+	}
 	public static void print_teamwinner() throws IOException {
 		int [] points = new int [8];
 		int i=0;
