@@ -16,7 +16,7 @@ public static void main (String[] args) throws IOException {
 	start=System.currentTimeMillis();
 	int seconds,minutes,z;
 	long i=0;
-	z=46;
+	z=47;
 	for(i=0;i<=z;i++) {
 		System.out.println("Fibonacci von "+i+" ist "+Fibonacci(i));
 	}

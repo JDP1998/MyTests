@@ -4,7 +4,7 @@ public class dlg_Threads {
 	public static void main (String[]args)
 	{
 		int i, anz;
-		i = 0;
+		i = 1;
 		anz = 10;
 		while (i <= anz) {
 			Prozess p = new Prozess();
