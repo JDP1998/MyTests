@@ -66,12 +66,12 @@ public class dlg_Entfernung {
 	private static int check_Distance(String stadt1, String stadt2) throws InterruptedException, NoSuchElementException, TimeoutException {
 		url="https://www.google.de/maps/";
 		cookies="/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/div[1]/form[2]/div/div/button/span[6]";
-		route="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[1]/div/div[1]/div[2]/button/span";
-		city1="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input";
-		city2="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[1]/div/input";
-		search="/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div[2]/button[1]/span";
-		result="/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[5]/div[1]/div[1]/div/div[1]/div[2]/div";
-		feet="//*[@id=\"omnibox-directions\"]/div/div[2]/div/div/div/div[4]/button/div[1]/span[3]";
+		route="//*[@id=\"hArJGc\"]";
+		city1="//*[@id=\"sb_ifc50\"]/input";
+		city2="//*[@id=\"sb_ifc51\"]/input";
+		search="//*[@id=\"directions-searchbox-1\"]/button[1]/span";
+		result="//*[@id=\"section-directions-trip-0\"]/div[1]/div/div[1]/div[2]/div";
+		feet="//*[@id=\"omnibox-directions\"]/div/div[1]/div/div/div/div[4]/button/div[1]";
 		
 		int ergebnis = -1;
 		String ergebnis_string;
