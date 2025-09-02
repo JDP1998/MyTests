@@ -1,6 +1,6 @@
 package Spongebob;
 
 public class Folge {
-	String name;
+	public String name;
 
 }
