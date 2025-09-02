@@ -9,6 +9,7 @@ public class Random_Artikel {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
+		System.out.println("Hello World!");
 		int i=0;
 		System.setProperty("webdriver.gecko.driver", "C:\\Users\\jportzeh\\Downloads\\geckodriver\\geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
