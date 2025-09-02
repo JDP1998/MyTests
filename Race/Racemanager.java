@@ -351,10 +351,10 @@ public class Racemanager {
 		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points"));
 		bWriter.write("\r\n");
 		bWriter.close();
-		record=checkRecord();
+		/*record=checkRecord();
 		if(record==true) {
 			System.out.println(winner+" has broken the record with an amazing "+seasonwinnerpoints+ "points. Congratulations!");
-		}
+		}*/
 	}
 	
 	private static boolean checkRecord() throws IOException {
