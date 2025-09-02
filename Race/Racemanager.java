@@ -351,10 +351,10 @@ public class Racemanager {
 		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points"));
 		bWriter.write("\r\n");
 		bWriter.close();
-		/*record=checkRecord();
+		record=checkRecord();
 		if(record==true) {
 			System.out.println(winner+" has broken the record with an amazing "+seasonwinnerpoints+ "points. Congratulations!");
-		}*/
+		}
 	}
 	
 	private static boolean checkRecord() throws IOException {
@@ -362,20 +362,20 @@ public class Racemanager {
 		ArrayList <Integer> lst_Points = new ArrayList<>(); 
 		String line;
 		String [] teile;
-		boolean new_record=false;
+		boolean new_record=true;
 		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
 		BufferedReader bReader = new BufferedReader(new FileReader(file));
 		while((line=bReader.readLine())!=null) {
-			teile=line.split(":");
-			lst_Points.add(Integer.valueOf(teile[1]));
+			teile=line.split(" ");
+			lst_Points.add(Integer.valueOf(teile[teile.length-2]));
 		}
 		bReader.close();
 		for(Integer i : lst_Points) {
 			if(i>=seasonwinnerpoints) {
-				new_record=true;
+				new_record=false;
 			}
 		}
 		return new_record;
