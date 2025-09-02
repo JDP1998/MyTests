@@ -370,6 +370,7 @@ public class Racemanager {
 		BufferedReader bReader = new BufferedReader(new FileReader(file));
 		while((line=bReader.readLine())!=null) {
 			teile=line.split(" ");
+			System.out.println(teile[teile.length-2]);
 			lst_Points.add(Integer.valueOf(teile[teile.length-2]));
 		}
 		bReader.close();
