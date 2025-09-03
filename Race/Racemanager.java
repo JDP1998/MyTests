@@ -347,13 +347,13 @@ public class Racemanager {
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
+		record=checkRecord();
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
 		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points"));
 		bWriter.write("\r\n");
 		bWriter.close();
-		record=checkRecord();
 		if(record==true) {
-			System.out.println(winner+" has broken the record with an amazing "+seasonwinnerpoints+ "points. Congratulations!");
+			System.out.println(winner+" has broken the record with an amazing "+seasonwinnerpoints+ " points. Congratulations!");
 		}
 	}
 	
