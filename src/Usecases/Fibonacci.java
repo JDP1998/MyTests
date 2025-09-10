@@ -26,29 +26,22 @@ public static void main (String[] args) throws IOException {
 	long start,end,time;
 	start=System.currentTimeMillis();
 	long i=0;
-	z=50;
+	z=48;
 	for(i=0;i<=z;i++) {
 		System.out.println("Fibonacci von "+i+" ist "+Fibonacci(i));
 	}
 	end=System.currentTimeMillis();
 	time=end-start;
 	time=time/1000;
-	minutes=(int)(time/60);
-	seconds=(int)(time%60);
+	seconds=(int)time;
 	System.out.println("Es hat "+seconds+" Sekunde(-n) gedauert.");
-	if(minutes<10) {
-		mstring="0"+String.valueOf(minutes);
-	}
-	else {
-		mstring=String.valueOf(minutes);
-	}
 	if(seconds<10) {
 		sstring="0"+String.valueOf(seconds);
 	}
 	else {
 		sstring=String.valueOf(seconds);
 	}
-	if(seconds<=47) {
+	if(seconds<=60) {
 		below++;
 	}
 	else {
@@ -59,7 +52,7 @@ public static void main (String[] args) throws IOException {
 	System.out.println("\r\n");
 	System.out.println(above+" mal liegt die Zeit über 47 Sekunden.");
 	BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(f,true));
-	bufferedWriter.write(mstring+":"+sstring);
+	bufferedWriter.write(sstring);
 	bufferedWriter.write("\r\n");
 	bufferedWriter.close();
 	BufferedWriter bufferedWriter2 = new BufferedWriter(new FileWriter(f2,false));
