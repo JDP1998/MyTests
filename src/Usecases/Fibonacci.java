@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Fibonacci {
 public static void main (String[] args) throws IOException {
-	int above,below,seconds,minutes,z;
+	int edge=65,above,below,seconds,minutes,z;
 	File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Fibonacci.txt");
 	File f2 = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Fibonacci_Counter.txt");
 	String mstring,sstring;
@@ -41,16 +41,16 @@ public static void main (String[] args) throws IOException {
 	else {
 		sstring=String.valueOf(seconds);
 	}
-	if(seconds<=60) {
+	if(seconds<=edge) {
 		below++;
 	}
 	else {
 		above++;
 	}
 	System.out.println("\r\n");
-	System.out.println(below+" mal liegt die Zeit unter 47 Sekunden.");
+	System.out.println(below+" war die Zeit schneller als "+edge+" Sekunden.");
 	System.out.println("\r\n");
-	System.out.println(above+" mal liegt die Zeit über 47 Sekunden.");
+	System.out.println(above+" war die Zeit langsamer als "+edge+" Sekunden.");
 	BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(f,true));
 	bufferedWriter.write(sstring);
 	bufferedWriter.write("\r\n");
