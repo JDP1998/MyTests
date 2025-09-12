@@ -153,6 +153,8 @@ public class Racemanager {
 				for(Team t: lst_Teams) {
 					if(teampoints[counter]==t.getPoints()) {
 						System.out.println(t.getName()+":"+t.getPoints());
+						lst_Teams.remove(t);
+						break;
 					}
 				}
 			}
@@ -163,6 +165,7 @@ public class Racemanager {
 					if (r2.getRacerPoints() == points[i] && r2.getPrinted() == false) {
 						r2.setPrinted(true);
 						System.out.println(r2.getRacerName() + ":" + r2.getRacerPoints());
+						lst_Racers.remove(r2);
 						break;
 					}
 				}
