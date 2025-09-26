@@ -403,6 +403,7 @@ public class Racemanager {
 				bWriter.write("\r\n");
 				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points"));
 				bWriter.close();
+				break;
 			}
 		}
 	}
