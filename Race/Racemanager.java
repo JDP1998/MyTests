@@ -401,7 +401,7 @@ public class Racemanager {
 			if(t.getPoints()==points[0]) {
 				System.out.println("The winning team is "+t.getName()+" with "+t.getPoints()+ " points.");
 				bWriter.write("\r\n");
-				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points."));
+				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points"));
 				bWriter.close();
 			}
 		}
