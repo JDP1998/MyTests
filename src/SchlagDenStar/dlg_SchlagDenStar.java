@@ -13,7 +13,7 @@ public class dlg_SchlagDenStar {
 		ArrayList<Table> lst_Tables = new ArrayList();
 		ArrayList <Table> lst_Random_Tables = new ArrayList();
 		String table,name;
-		File f = new File("C:\\Users\\Johannes\\Documents\\Tische.txt");
+		File f = new File("src/SchlagDenStar/Tische.txt");
 		int counter = 0, random;
 		if (f.exists() == false) {
 			f.createNewFile();
