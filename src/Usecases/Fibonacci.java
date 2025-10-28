@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Fibonacci {
 public static void main (String[] args) throws IOException {
-	int edge=65,above,below,seconds,minutes,z;
+	int edge=67,above,below,seconds,minutes,z;
 	File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Fibonacci.txt");
 	File f2 = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Fibonacci_Counter.txt");
 	String mstring,sstring;
