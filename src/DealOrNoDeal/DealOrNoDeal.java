@@ -127,8 +127,8 @@ public class DealOrNoDeal extends JFrame {
 		panel3.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Kandidat Historie");
-		lblNewLabel.setBounds(38, 81, 325, 39);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(22, 83, 183, 39);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panel3.add(lblNewLabel);
 		
 		text_wins = new JTextField();
@@ -141,7 +141,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		JLabel lbl_wins = new JLabel("Siege: ");
 		lbl_wins.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbl_wins.setBounds(65, 143, 74, 39);
+		lbl_wins.setBounds(143, 147, 62, 39);
 		panel3.add(lbl_wins);
 		
 		txt_loss = new JTextField();
@@ -154,7 +154,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		JLabel lbl_loss = new JLabel("Verloren:");
 		lbl_loss.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbl_loss.setBounds(38, 222, 124, 33);
+		lbl_loss.setBounds(119, 225, 86, 33);
 		panel3.add(lbl_loss);
 		
 		JTextField text_quote = new JTextField();
@@ -167,7 +167,7 @@ public class DealOrNoDeal extends JFrame {
 		
 		JLabel lbl_quote = new JLabel("Quote:");
 		lbl_quote.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbl_quote.setBounds(65, 300, 124, 33);
+		lbl_quote.setBounds(143, 300, 62, 33);
 		panel3.add(lbl_quote);
 		
 		pane.add("Rekorde",panel4);
