@@ -5,5 +5,5 @@ import javax.swing.JTextField;
 
 public class Ammount extends JTextField {
 String ammount;
-int number;
+int number, test;
 }

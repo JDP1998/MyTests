@@ -6,6 +6,7 @@ public class dlg_ReadAndWrite {
 	public static int number=0;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		System.out.println("Hallo Welten!");
 		ArrayList <Thread> lst_Threads = new ArrayList<>();
 		int i=1,anz=10;
 		while(i<=anz) {
