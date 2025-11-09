@@ -1,7 +1,14 @@
 package Darts;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,19 +19,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class Guesser extends JFrame {
-
-	public static ArrayList <Player> lst_Players = new ArrayList();
-	private static final long serialVersionUID = 1L;
+	public static int length=224;
+	public static String names [] = new String [length];
 	private JPanel contentPane;
 
 	/**
@@ -59,7 +58,7 @@ public class Guesser extends JFrame {
 		JButton btn_Start = new JButton("Start");
 		btn_Start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int counter = 1;
+				int counter = 0;
 				System.setProperty("gecko.driver","Drivers//geckodriver.exe");
 				WebDriver d = new FirefoxDriver();
 				WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
@@ -67,22 +66,22 @@ public class Guesser extends JFrame {
 				d.get("https://www.dartsrankings.com/");
 				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//td//child::a")));
 				List <WebElement> lst_WebElements = d.findElements(By.xpath("//td//child::a"));
+				length=lst_WebElements.size();
 				for(WebElement element: lst_WebElements) {
-					Player p = new Player();
-					p.set_Name(element.getText());
-					p.set_Number(counter);
-					lst_Players.add(p);
+					names[counter]=element.getText();
 					counter++;
 				}
 				d.quit();
-				for (Player player: lst_Players) {
-					System.out.println(player.get_Number()+" : "+player.get_Name());
-				}
 				
 			}
 		});
 		btn_Start.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btn_Start.setBounds(10, 164, 76, 72);
 		contentPane.add(btn_Start);
+		
+		JList list_Players = new JList(names);
+		list_Players.setBounds(10, 23, 150, 116);
+		contentPane.add(list_Players);
+		
 	}
 }
