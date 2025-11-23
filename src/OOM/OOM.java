@@ -43,6 +43,7 @@ public class OOM extends JFrame {
 			public void run() {
 				try {
 					OOM frame = new OOM();
+					frame.setTitle("OOM Game");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,7 +84,7 @@ public class OOM extends JFrame {
 			}
 		});
 		btn_Player1.setEnabled(false);
-		btn_Player1.setBounds(22, 47, 160, 23);
+		btn_Player1.setBounds(22, 47, 201, 23);
 		contentPane.add(btn_Player1);
 		btn_Player2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,19 +108,11 @@ public class OOM extends JFrame {
 		
 
 		btn_Player2.setEnabled(false);
-		btn_Player2.setBounds(22, 106, 160, 23);
+		btn_Player2.setBounds(22, 106, 201, 23);
 		contentPane.add(btn_Player2);
 		
-		JLabel lbl_Player1 = new JLabel("Spieler 1:");
-		lbl_Player1.setBounds(22, 22, 114, 14);
-		contentPane.add(lbl_Player1);
-		
-		JLabel lbl_Player2 = new JLabel("Spieler 2:");
-		lbl_Player2.setBounds(22, 81, 114, 14);
-		contentPane.add(lbl_Player2);
-		
-		JButton bnt_Start = new JButton("Start");
-		bnt_Start.addActionListener(new ActionListener() {
+		JButton btn_Start = new JButton("Start");
+		btn_Start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int counter=1;
 				System.setProperty("gecko.driver","Drivers//geckodriver.exe");
@@ -149,10 +142,11 @@ public class OOM extends JFrame {
 				btn_Player2.setText(lst_Players.get(random2).get_Name());
 				btn_Player1.setEnabled(true);
 				btn_Player2.setEnabled(true);
+				btn_Start.setEnabled(false);
 			}
 		});
-		bnt_Start.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		bnt_Start.setBounds(22, 169, 80, 80);
-		contentPane.add(bnt_Start);
+		btn_Start.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btn_Start.setBounds(22, 169, 80, 80);
+		contentPane.add(btn_Start);
 	}
 }
