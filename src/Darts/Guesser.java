@@ -57,7 +57,7 @@ public class Guesser extends JFrame {
 	 */
 	public Guesser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 1000);
+		setBounds(100, 100, 1100, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -68,12 +68,12 @@ public class Guesser extends JFrame {
 			Field aktField = new Field();
 			aktField.setEditable(false);
 			aktField.setFont(new Font("Tahoma", Font.PLAIN, 9));
-			aktField.setBounds(x, y, 160, 60);
+			aktField.setBounds(x, y, 160, 40);
 			aktField.set_number(counter);
 			contentPane.add(aktField);
 			lst_Fields.add(aktField);
-			if(y<800) {
-				y=y+100;
+			if(y<450) {
+				y=y+50;
 			}
 			else {
 				x=x+200;
@@ -119,7 +119,7 @@ public class Guesser extends JFrame {
 		contentPane.add(btn_Start);
 		
 		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(0, 100, 172, 496);
+		scroll.setBounds(0, 100, 172, 400);
 		contentPane.add(scroll);
 		
 		JList list_Players = new JList(names);
@@ -140,13 +140,20 @@ public class Guesser extends JFrame {
 						break;
 					}
 				}
-				if(is_part==true) {
-					for(Field f: lst_Fields) {
-						if(f.get_number()==pointer) {
-							f.setText(selection);
-							guesscount++;
-							txt_Counter.setText(String.valueOf(guesscount)+"/32");
+				if (is_part == true) {
+					for (Field f : lst_Fields) {
+						if (f.get_number() == pointer) {
+							if(f.get_is_guessed()==false) {
+								f.setText(selection);
+								f.set_is_guessed(true);
+								guesscount++;
+								txt_Counter.setText(String.valueOf(guesscount) + "/32");
+								list_Players.setSelectedIndex(0);	
 							}
+							else {
+								JOptionPane.showMessageDialog(btn_OK, "Das hast du schon geraten!");
+							}
+						}
 					}
 				}
 				else {
