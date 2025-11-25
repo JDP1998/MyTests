@@ -517,6 +517,12 @@ public class Racemanager {
 		for(Racer r: lst_GrandPrix) {
 			if(r.getRacerName().equals(winner)) {
 				r.setRacerPoints(r.getRacerPoints()+1);
+				
+				if(r.getRacerPoints()+1%10==0&&r.getRacerPoints()>0) {
+					System.out.println("\r\n");
+					System.out.println(r.getRacerName()+" has won her "+r.getRacerPoints+"th GrandPrix. Many Congratulations!");
+					System.out.println("r\n");
+				}
 			}
 			/*bWriter.write(r.getRacerName()+":"+String.valueOf(r.getRacerPoints()));
 			bWriter.write("\r\n");*/
