@@ -32,6 +32,7 @@ public class Guesser extends JFrame {
 	public static String names [] = new String [length];
 	public static ArrayList <String> lst_Top = new ArrayList<>();
 	public static ArrayList <Field> lst_Fields = new ArrayList<>();
+	public static JButton btn_OK = new JButton("OK");
 	private JPanel contentPane;
 	private JTextField txt_Counter;
 
@@ -57,7 +58,7 @@ public class Guesser extends JFrame {
 	 */
 	public Guesser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 700);
+		setBounds(100, 100, 1100, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -111,6 +112,8 @@ public class Guesser extends JFrame {
 				Arrays.sort(names);
 				d.quit();
 				btn_Start.setEnabled(false);
+				btn_OK.setEnabled(true);
+				
 				
 			}
 		});
@@ -126,41 +129,45 @@ public class Guesser extends JFrame {
 		scroll.setViewportView(list_Players);
 		list_Players.setFixedCellHeight(15);
 		
-		JButton btn_OK = new JButton("OK");
+		btn_OK.setEnabled(false);
 		btn_OK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection;
 				int pointer=-1;
 				boolean is_part=false;
-				selection = names[list_Players.getSelectedIndex()];
-				for (String s: lst_Top) {
-					if(s.equals(selection)==true) {
-						is_part=true;
-						pointer=lst_Top.indexOf(s);
-						break;
+				if(list_Players.getSelectedIndex()>=0) {
+					selection = names[list_Players.getSelectedIndex()];
+					for (String s : lst_Top) {
+						if (s.equals(selection) == true) {
+							is_part = true;
+							pointer = lst_Top.indexOf(s);
+							break;
+						}
 					}
-				}
-				if (is_part == true) {
-					for (Field f : lst_Fields) {
-						if (f.get_number() == pointer) {
-							if(f.get_is_guessed()==false) {
-								f.setText(selection);
-								f.set_is_guessed(true);
-								guesscount++;
-								txt_Counter.setText(String.valueOf(guesscount) + "/32");
-								list_Players.setSelectedIndex(0);	
-							}
-							else {
-								JOptionPane.showMessageDialog(btn_OK, "Das hast du schon geraten!");
+					if (is_part == true) {
+						for (Field f : lst_Fields) {
+							if (f.get_number() == pointer) {
+								if (f.get_is_guessed() == false) {
+									f.setText(selection);
+									f.set_is_guessed(true);
+									guesscount++;
+									txt_Counter.setText(String.valueOf(guesscount) + "/32");
+									list_Players.setSelectedIndex(0);
+								} else {
+									JOptionPane.showMessageDialog(btn_OK, "Das hast du schon geraten!");
+								}
 							}
 						}
+					} else {
+						JOptionPane.showMessageDialog(btn_OK,
+								"Das Spiel ist vorbei! Du hast " + guesscount + " von 32 erkannt!");
+						setVisible(false);
+						dispose();
+
 					}
 				}
 				else {
-					JOptionPane.showMessageDialog(btn_OK, "Das Spiel ist vorbei! Du hast "+guesscount+" von 32 erkannt!");
-					setVisible(false);
-					dispose();
-					
+					JOptionPane.showMessageDialog(btn_OK, "Nutzen sie die den Scroller!");
 				}
 			}
 		});
