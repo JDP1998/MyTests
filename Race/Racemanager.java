@@ -520,7 +520,7 @@ public class Racemanager {
 				
 				if(r.getRacerPoints()+1%10==0&&r.getRacerPoints()>0) {
 					System.out.println("\r\n");
-					System.out.println(r.getRacerName()+" has won her "+r.getRacerPoints+"th GrandPrix. Many Congratulations!");
+					System.out.println(r.getRacerName()+" has won her "+r.getRacerPoints()+"th GrandPrix. Many Congratulations!");
 					System.out.println("r\n");
 				}
 			}
