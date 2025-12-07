@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -76,8 +77,13 @@ public class dlg_Entfernung {
 		int ergebnis = -1;
 		String ergebnis_string;
 		String [] arr;
+		String [] arr2;
 		System.setProperty("gecko.driver","Driver//geckodriver.exe");
-		WebDriver d = new FirefoxDriver();
+		FirefoxOptions options = new FirefoxOptions();
+		options.addArguments("--headless=new");
+		options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+		WebDriver d = new FirefoxDriver(options);
 		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
 		d.get(url);
@@ -93,7 +99,8 @@ public class dlg_Entfernung {
 		d.findElement(By.xpath(search)).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(result)));
 		ergebnis_string = d.findElement(By.xpath(result)).getText();
-		arr = ergebnis_string.split(" ");
+		arr2 = ergebnis_string.split(" ");
+		arr = arr2[0].split(",");
 		ergebnis_string = arr[0].replace(".", "");
 		ergebnis = Integer.valueOf(ergebnis_string);
 		d.quit();

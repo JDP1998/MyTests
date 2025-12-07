@@ -15,6 +15,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -59,7 +60,11 @@ public class dlg_Spongebob {
 		result="/html/body/div[3]/div/div[3]/div[4]/table[1]/tbody/tr[4]/td[2]";
 		int loesung=-1;
 		System.setProperty("gecko.driver","Drivers//geckodriver.exe");
-		WebDriver d = new FirefoxDriver();
+		FirefoxOptions options = new FirefoxOptions();
+		options.addArguments("--headless=new");
+		options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+		WebDriver d = new FirefoxDriver(options);
 		WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(10));
 		d.manage().window().maximize();
 		d.get("http://de.spongepedia.org/index.php/Hauptseite");
