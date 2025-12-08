@@ -55,7 +55,7 @@ public class dlg_Entfernung {
 			}
 			guthaben=guthaben-differenz;
 			runde++;
-			System.out.println("Die Entfernung zwischen "+stadt1+" und "+stadt2+" ist "+loesung+"! Damit beträgt dein Guthaben "+guthaben+"!");
+			System.out.println("Die Entfernung zwischen "+stadt1+" und "+stadt2+" ist "+loesung+". Damit beträgt dein Guthaben "+guthaben+"!");
 			System.out.println("\r\n");
 		}
 		runde--;
