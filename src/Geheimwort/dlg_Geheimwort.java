@@ -39,7 +39,7 @@ public class dlg_Geheimwort {
 			}
 			if(result==0) {
 				System.out.println("\r\n");
-				System.out.println("Du hast das Geheimwort gelöst. Es war "+solution+". Du hast "+round+" Runden gebraucht");
+				System.out.println("Du hast das Geheimwort gelöst. Es war "+solution+"! Du hast "+round+" Runden gebraucht");
 				solved=true;
 			}
 			else {
