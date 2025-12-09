@@ -18,7 +18,6 @@ public class dlg_Koordinaten {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Test");
 		System.out.println("Nach welcher Stadt willst du suchen?");
 		city=scanner.nextLine();
 		calculate_coordinates();
