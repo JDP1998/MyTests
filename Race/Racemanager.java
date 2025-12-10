@@ -347,14 +347,14 @@ public class Racemanager {
 		winner=teile[0];
 		seasonwinnerpoints=Integer.valueOf(teile[1]);
 		System.out.println("\r\n");
-		System.out.println("The winner is "+winner+" with "+seasonwinnerpoints);
+		System.out.println("The winner is "+winner+" with "+seasonwinnerpoints+" points.");
 		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
 		record=checkRecord();
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
-		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points"));
+		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points."));
 		bWriter.write("\r\n");
 		bWriter.close();
 		if(record==true) {

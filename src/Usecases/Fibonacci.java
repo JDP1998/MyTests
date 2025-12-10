@@ -41,7 +41,7 @@ public static void main (String[] args) throws IOException {
 	else {
 		sstring=String.valueOf(seconds);
 	}
-	if(seconds<=edge) {
+	if(seconds<edge) {
 		below++;
 	}
 	else {
