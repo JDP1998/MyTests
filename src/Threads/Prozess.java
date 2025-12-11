@@ -1,12 +1,20 @@
 package Threads;
 
 public class Prozess implements Runnable {
-	int name,position;
+	private int position,wins;
+	private String name;
 
-	public int getName() {
+	
+	public void setWins(int wins) {
+		this.wins=wins;
+	}
+	public int getWins() {
+		return wins;
+	}
+	public String getName() {
 		return name;
 	}
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name=name;
 	}
 	public int getPosition() {
@@ -28,7 +36,7 @@ public class Prozess implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Thread "+getName()+" ist fertig!");
+		System.out.println(getName()+" ist fertig!");
 		setPosition(dlg_Threads.position);
 		dlg_Threads.position++;
 		if(getPosition()==1) {
