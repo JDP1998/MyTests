@@ -1,0 +1,240 @@
+Mariehamn
+Tirana
+Andorra la Vella
+Minsk
+Brüssel
+Sarajevo
+Sofia
+Kopenhagen
+Berlin
+Tallinn
+Thorshaven
+Helsinki
+Paris
+Gibraltar
+Athen
+Saint Peter Port
+Douglas
+Dublin
+Reykjavík
+Rom
+Saint Helier
+Pristina
+Zagreb
+Riga
+Vaduz
+Vilnius
+Luxemburg
+Valletta
+Chisinau
+Monaco
+Podgorica
+Amsterdam
+Skopje
+Oslo
+Wien
+Warschau
+Lissabon
+Bukarest
+Moskau
+San Marino
+Stockholm
+Ber (Bundesstadt)
+Belgrad
+Bratislava
+Ljubljana
+Madrid
+Longyearbyen
+Prag
+Kiew
+Budapest
+Vatikan Stadt
+London
+The Valley
+Saint John’s
+Buenos Aires
+Oranjestad
+Nassau
+Bridgetown
+Belmopan
+Hamilton
+Sucre
+Brasilia
+Santiago
+San José
+Willemstad
+Roseau
+Santo Domingo
+Quito
+San Salvador
+Stanley
+Cayenne
+Saint George's
+Nuuk
+Basse-Terre
+Guatemala-Stadt
+Georgetown
+Port-au-Prince
+Tegucigalpa
+Kingston
+Road Town
+Charlotte Amalie
+George Town
+Ottawa
+Bogota
+Havanna
+Fort-de-France
+Mexiko-Stadt
+Brades
+Managua
+Panama-Stadt
+Asunción
+Lima
+San Juan
+Gustavia
+Philipsburg
+Basseterre
+Castries
+Marigot
+Saint-Pierre
+Kingstown
+King Edward Point
+Paramaribo
+Port-of-Spain
+Cockburn Town
+Montevideo
+Washington, D.C.
+Caraca
+Kabul
+Abu Dhabi
+Jerewan
+Baku
+Manama
+Dhaka
+Thimphu
+Bandar Seri Begawan
+Peking
+Tiflis
+Hongkong
+Neu-Delhi
+Jakarta
+Bagdad
+Teheran
+Jerusalem (bzw. Tel Aviv)
+Tokio
+Sanaa
+Amman
+Phnom Penh
+Astana
+Doha
+Bishkek
+Kuwait-Stadt
+Vientiane
+Beirut
+Concelho de Macau
+Kuala Lumpur
+Malé
+Ulaanbaatar
+Nay Pyi Taw
+Kathmandu
+Pjöngjang
+Muskat
+Dili
+Islamabad
+Ramallah (bzw. Ost-Jerusalem)
+Manila
+Riad
+Singapur
+Colombo
+Seoul
+Damaskus
+Dushanbe
+Taipei
+Bangkok
+Ankara
+Ashgabat
+Taschkent
+Hanoi
+Nikosia
+Kairo
+Algier
+Luanda
+Malabo
+Addis Abeba
+Porto-Novo
+Gaborone
+Ouagadougou
+Gitega
+Dschibuti
+Yamoussoukro
+Asmara
+Mbabane
+Libreville
+Banjul
+Accra
+Conakry
+Bissau
+Jaunde
+Praia
+Nairobi
+Moroni
+Brazzaville
+Kinshasa
+Maseru
+Monrovia
+Tripolis
+Antananarivo
+Lilongwe
+Bamako
+Rabat
+Nouakchott
+Port Louis
+Mamoudzou
+Maputo
+Windhoek
+Niamey
+Abuja
+Saint-Denis
+Kigali
+Lusaka
+São Tomé
+Dakar
+Victoria
+Freetown
+Harare
+Mogadishu
+Jamestown
+Pretoria
+Khartum
+Juba
+Dodoma
+Lomé
+N'Djamena
+Tunis
+Kampala
+El Aaiún
+Bangui
+Pago Pago
+Canberra
+Avarua
+Suva
+Papeete
+Hagåtña
+Tarawa
+West Island
+Majuro
+Yaren
+Nouméa
+Wellington
+Alofi
+Saipan
+Kingston
+Port Moresby
+Adamstown
+Honiara
+Apia
+Nuku‘alofa
+Funafuti
+Port-Vila
+Mata-Utu
+Flying Fish Cove
