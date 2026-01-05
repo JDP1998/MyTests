@@ -37,6 +37,13 @@ public class dlg_Threads {
 				}
 			}
 		}
+		
+		for(Prozess p: lst_Prozesses) {
+			if(p.getPosition()==1) {
+				winner=p.getName();
+				break;
+			}
+		}
 		print_winner();
 		
 		File f = new File("C:\\Users\\jportzeh\\Desktop\\Java Dateien\\Threads.txt");

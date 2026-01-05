@@ -39,9 +39,6 @@ public class Prozess implements Runnable {
 		System.out.println(getName()+" ist fertig!");
 		setPosition(dlg_Threads.position);
 		dlg_Threads.position++;
-		if(getPosition()==1) {
-			dlg_Threads.winner=getName();
-		}
 	}
 	
 
