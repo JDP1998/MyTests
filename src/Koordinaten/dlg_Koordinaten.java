@@ -23,7 +23,16 @@ public class dlg_Koordinaten {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
-		int differenz,guess_breite,guess_laenge,random,points=200;
+		int counter=1,fallnr=0,differenz = 0,guess_breite,guess_laenge,random,points=0;
+		System.out.println("Möchtest du ein kurzes (1), mittleres (2) oder langes Spiel (3)?");
+		fallnr=scanner.nextInt();
+		switch(fallnr) {
+		case 1: points=200;break;
+		case 2: points=400;break;
+		case 3: points=600;break;
+		default: System.out.println("Das ist was schief gelaufen!");break;
+		}
+		System.out.println("\r\n");
 		fill_list();
 		while(points>0) {
 			random = (int) (Math.random()*lst_Staedte.size());
@@ -39,23 +48,24 @@ public class dlg_Koordinaten {
 			System.out.println("\r\n");
 			System.out.println("Der Längegrad ist: " + länge);
 			System.out.println("\r\n");
-			if(guess_breite>breite) {
-				differenz=guess_breite-breite;
-			}
-			else {
-				differenz=breite-guess_breite;
+			if (guess_breite >= breite) {
+				differenz = guess_breite - breite;
+			} else {
+				differenz = breite - guess_breite;
 			}
 			points=points-differenz;
-			if(guess_laenge>länge) {
-				differenz=guess_laenge-länge;
+			if (guess_laenge >= länge) {
+				differenz = guess_laenge - länge;
+			} else {
+				differenz = länge - guess_laenge;
 			}
-			else {
-				differenz=breite-guess_breite;
-			}
+			Math.abs(differenz);
 			points=points-differenz;
 			System.out.println("Du hast noch "+points+" Punkte.");
 			System.out.println("\r\n");
+			counter++;
 		}
+		System.out.println("Das Spiel ist vorbei. Du hast "+counter+" Runden überstanden.");
 
 	}
 
@@ -97,7 +107,13 @@ public class dlg_Koordinaten {
 		breitengrad=ergebnis[0];
 		längengrad=ergebnis[1];
 		breite=(int)(Math.round(Double.valueOf(breitengrad)));
-		länge=(int)(Math.round(Double.valueOf(längengrad)));
+		if (breite < 0) {
+			breite = Math.abs(breite);
+		}
+		länge = (int) (Math.round(Double.valueOf(längengrad)));
+		if (länge < 0) {
+			länge = Math.abs(länge);
+		}
 		
 	}
 
