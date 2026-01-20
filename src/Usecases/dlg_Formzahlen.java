@@ -13,8 +13,26 @@ public class dlg_Formzahlen {
 		System.out.println("\r\n");
 		System.out.println("Fünfeckzahl bis "+counter+": ");
 		fuenfeckzahlen(counter);
+		System.out.println("\r\n");
+		System.out.println("Sechseckzahl bis "+counter+": ");
+		sechseckzahlen(counter);
 		
 		
+	}
+	private static void sechseckzahlen(int limit) {
+		// TODO Auto-generated method stub
+		int number=1, addcounter=5, result=1;
+		while(number<limit) {
+			if(number>1) {
+				result=result+addcounter;
+				addcounter=addcounter+4;
+			}
+			else {
+				result=1;
+			}
+			System.out.println(result);
+			number++;
+		}
 	}
 	private static void fuenfeckzahlen(int limit) {
 		// TODO Auto-generated method stub
