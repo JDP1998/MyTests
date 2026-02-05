@@ -194,7 +194,7 @@ public class Racemanager {
 
 	public static void get_Counter() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("./Race/Counter.txt");
+		File file = new File("Race//Counter.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
