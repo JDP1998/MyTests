@@ -1,0 +1,8 @@
+Kawasaki:132
+Ducati:92
+KTM:170
+Honda:119
+Aprilla:153
+BMW:158
+Suzuki:118
+Yamaha:158

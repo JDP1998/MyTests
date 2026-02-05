@@ -83,7 +83,7 @@ public class Racemanager {
     }
 	public static void update_table() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Racers.txt");
+		File file = new File("./Race/Racers.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -94,7 +94,7 @@ public class Racemanager {
 		}
 		bWriter.close();
 		
-		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		File file2 = new File("./Race/Teams.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
@@ -120,7 +120,7 @@ public class Racemanager {
 		Arrays.sort(points);
 		i=points.length-1;
 		if (is_execution_2 == true) {
-			File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+			File file = new File(".Race/Standings.txt");
 			if(file.exists()==false) {
 				file.createNewFile();
 			}
@@ -178,7 +178,7 @@ public class Racemanager {
 
 	public static void fill_list_points() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Points.txt");
+		File file = new File("./Race/Points.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -194,7 +194,7 @@ public class Racemanager {
 
 	public static void get_Counter() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Counter.txt");
+		File file = new File(".Race/Counter.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -202,7 +202,7 @@ public class Racemanager {
 		venuecount = Integer.valueOf(bReader.readLine());
 		bReader.close();
 		
-		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Season.txt");
+		File file2 = new File("./Race/Season.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
@@ -214,7 +214,7 @@ public class Racemanager {
 
 	public static void update_counter() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Counter.txt");
+		File file = new File("./Race/Counter.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -227,7 +227,7 @@ public class Racemanager {
 
 	public static void fill_list_venues() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Venues.txt");
+		File file = new File("./Race/Venues.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -251,7 +251,7 @@ public class Racemanager {
 
 	public static void fill_list_racers() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Racers.txt");
+		File file = new File("./Race/Racers.txt");
 		int akt_team=0,counter=0;
 		if (file.exists() == false) {
 			file.createNewFile();
@@ -277,7 +277,7 @@ public class Racemanager {
 
 	public static void reset_table() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Racers.txt");
+		File file = new File("./Race/Racers.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -288,7 +288,7 @@ public class Racemanager {
 		}
 		bWriter.close();
 		
-		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+		File file2 = new File("./Race/Standings.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
@@ -299,7 +299,7 @@ public class Racemanager {
 		}
 		bWriter2.close();
 		
-		File file3 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		File file3 = new File("./Race/Teams.txt");
 		if (file3.exists() == false) {
 			file3.createNewFile();
 		}
@@ -313,7 +313,7 @@ public class Racemanager {
 
 	public static void reset_counter() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Counter.txt");
+		File file = new File("./Race/Counter.txt");
 		if (file.exists() == false) {
 			file.createNewFile();
 		}
@@ -321,7 +321,7 @@ public class Racemanager {
 		bWriter.write("0");
 		bWriter.close();
 		
-		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Season.txt");
+		File file2 = new File("./Race/Season.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
@@ -336,7 +336,7 @@ public class Racemanager {
 		String line,winner,points;
 		String teile[];
 		boolean record;
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
+		File file = new File("./Race/Standings.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
@@ -348,7 +348,7 @@ public class Racemanager {
 		seasonwinnerpoints=Integer.valueOf(teile[1]);
 		System.out.println("\r\n");
 		System.out.println("The winner is "+winner+" with "+seasonwinnerpoints+" points.");
-		File file2 = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
+		File file2 = new File("./Race/Winners.txt");
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
@@ -368,7 +368,7 @@ public class Racemanager {
 		String line;
 		String [] teile;
 		boolean new_record=true;
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Winners.txt");
+		File file = new File("./Race/Winners.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
@@ -392,7 +392,7 @@ public class Racemanager {
 			points[i]=lst_Teams.get(i).getPoints();
 		}
 		Arrays.sort(points);
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\TeamWinners.txt");
+		File file = new File("./Race/TeamWinners.txt");
 		if(file.exists()==true) {
 			file.createNewFile();
 		}
@@ -410,7 +410,7 @@ public class Racemanager {
 	
 	public static void fill_list_teams() throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Teams.txt");
+		File file = new File("./Race/Teams.txt");
 		int counter=0;
 		if (file.exists() == false) {
 			file.createNewFile();
@@ -430,8 +430,8 @@ public class Racemanager {
 		bReader.close();
 	}
 	public static void update_history() throws IOException {
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\Standings.txt");
-		File file2 = new File ("C:\\Users\\jportzeh\\Documents\\Race\\History.txt");
+		File file = new File("./Race/Standings.txt");
+		File file2 = new File ("./Race/History.txt");
 		String [] racerhistory = new String[32];
 		String [] teile;
 		String line, line2;
@@ -494,7 +494,7 @@ public class Racemanager {
 		String [] teile;
 		ArrayList <Racer> lst_GrandPrix = new ArrayList(); 
 		ArrayList <Racer> lst_GrandPrix_listed = new ArrayList(); 
-		File file = new File("C:\\Users\\jportzeh\\Documents\\Race\\GrandPrixWins.txt");
+		File file = new File("./Race/GrandPrixWins.txt");
 		if(file.exists()==false) {
 			file.createNewFile();
 		}
