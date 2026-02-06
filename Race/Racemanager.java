@@ -352,7 +352,7 @@ public class Racemanager {
 		if (file2.exists() == false) {
 			file2.createNewFile();
 		}
-		record=checkRecord();
+		record=checkRacerRecord();
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(file2, true));
 		bWriter.write(String.valueOf("Season "+seasoncount+" : "+winner+" with "+seasonwinnerpoints+" points."));
 		bWriter.write("\r\n");
@@ -362,7 +362,7 @@ public class Racemanager {
 		}
 	}
 	
-	private static boolean checkRecord() throws IOException {
+	private static boolean checkRacerRecord() throws IOException {
 		// TODO Auto-generated method stub
 		ArrayList <Integer> lst_Points = new ArrayList<>(); 
 		String line;
@@ -388,6 +388,7 @@ public class Racemanager {
 	public static void print_teamwinner() throws IOException {
 		int [] points = new int [8];
 		int i=0;
+		boolean record;
 		for(i=0;i<=points.length-1;i++) {
 			points[i]=lst_Teams.get(i).getPoints();
 		}
@@ -400,12 +401,18 @@ public class Racemanager {
 		for(Team t: lst_Teams) {
 			if(t.getPoints()==points[0]) {
 				System.out.println("The winning team is "+t.getName()+" with "+t.getPoints()+ " points.");
+				record=checkTeamRecord();
 				bWriter.write("\r\n");
 				bWriter.write(String.valueOf("Season "+seasoncount+" : "+t.getName()+" with "+t.getPoints()+" points"));
 				bWriter.close();
 				break;
 			}
 		}
+	}
+	
+	private static boolean checkTeamRecord() throws IOException {
+		boolean new_record=true;
+		return new_record;
 	}
 	
 	public static void fill_list_teams() throws IOException {
@@ -428,6 +435,9 @@ public class Racemanager {
 			counter++;
 		}
 		bReader.close();
+	}
+	public static void update_teamhistory() throws IOException {
+		
 	}
 	public static void update_history() throws IOException {
 		File file = new File("Race/Race/Standings.txt");
